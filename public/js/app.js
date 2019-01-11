@@ -7,6 +7,7 @@ var game = {
     questionPicker: function (trivia_database){
         var choice = /* in order or random?? */; 
         trivia = trivia;
+        game.display(trivia);
     },
     display: function(trivia){
         /*trivia => specific question. Assumes the following format:
@@ -34,6 +35,7 @@ var game = {
         $(a2).appendTo(qDiv);
         $(a3).appendTo(qDiv);
         $(a4).appendTo(qDiv);
+        //timer
         setTimeout(function(){
             time -= 1;
             $('#timeBox').empty();
@@ -44,7 +46,7 @@ var game = {
         var actualAnswer = trivia.a;
         time = 10;
         if (actualAnswer != playerAns){
-            game.over()
+            game.over();
         } else {
             score += 1;
             game.questionPicker();
@@ -55,10 +57,14 @@ var game = {
         $(/* page game div */).empty();
         alert('Game over! Your final score was ' + score);
         //insert actual game ending here.
+        //go back to home?
+        score = 0;
+        window.location.assign('/');
     }
 };
 
 $(document).on('click', 'ansBtn', function(){
     var playerAns = $(this).val(); //not sure if this will work for the value of the button...
+    console.log(playerAns); // we'll find out!
     game.verify(trivia, playerAns);
 })
