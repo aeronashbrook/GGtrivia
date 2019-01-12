@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var leaderboard = sequelize.define("leaderboard", {
+    var Leaderboard = sequelize.define("leaderboard", {
         name: {
             type: DataTypes.STRING,
             validate: {
@@ -16,5 +16,5 @@ module.exports = function(sequelize, DataTypes) {
             }
         }
     });
-    return leaderboard;
+    return Leaderboard;
 }

@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var questions = sequelize.define("questions", {
+    var Questions = sequelize.define("questions", {
         question: {
             type: DateTypes.STRING,
             validate: {
@@ -58,5 +58,5 @@ module.exports = function(sequelize, DataTypes) {
         }
 
     });
-    return questions;
+    return Questions;
 };

@@ -1,24 +1,36 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  // Get for Questions
+  app.get("/api/questions", function(req, res) {
+    db.Questions.findAll({}).then(function(dbQuestions) {
+      res.json(dbQuestions);
+    });
+  });
+  // Get for Leaderboard
+  app.get("/api/leaderboard", function(req, res) {
+    db.Leaderboard.findAll({}).then(function(dbLeaderboard) {
+      res.json(dbLeaderboard);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  // Post for Questions
+  app.post("/api/questions", function(req, res) {
+    db.Questions.create(req.body).then(function(dbQuestions) {
+      res.json(dbQuestions);
+    });
+  });
+  // Post for Leaderboard
+  app.post("/api/leaderboard", function(req, res) {
+    db.Leaderboard.create(req.body).then(function(dbLeaderboard) {
+      res.json(dbLeaderboard);
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
+  // // Delete an example by id
+  // app.delete("/api/examples/:id", function(req, res) {
+  //   db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
+  //     res.json(dbExample);
+  //   });
+  // });
 };
