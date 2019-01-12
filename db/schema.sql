@@ -1,0 +1,23 @@
+DROP DATABASE IF EXISTS trivia;
+
+CREATE DATABASE trivia;
+
+USE trivia;
+
+CREATE TABLE questions (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    question VARCHAR(255) NOT NULL,
+    option1 VARCHAR(255) NOT NULL,
+    option2 VARCHAR(255) NOT NULL,
+    option3 VARCHAR(255) NOT NULL,
+    option4 VARCHAR(255) NOT NULL,
+    correctAnswer VARCHAR(255) NOT NULL,
+    category VARCHAR(100)
+);
+
+CREATE TABLE leaderboard (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    score INT NOT NULL
+);
+
