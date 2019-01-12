@@ -3,9 +3,7 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Questions.findAll({}).then(function(dbQuestions) {
       res.render("index");
-    });
   });
 
   // Load index page
@@ -24,16 +22,12 @@ module.exports = function(app) {
 
   // Load index page
   app.get("/loser", function(req, res) {
-    db.Leaderboard.findAll({}).then(function(dbLeaderboard) {
       res.render("loser");
-    });
   });
 
   // Load index page
   app.get("/winner", function(req, res) {
-    db.Example.findAll({}).then(function(dbLeaderboard) {
       res.render("winner");
-    });
   });
 
   // Load example page and pass in an example by id
