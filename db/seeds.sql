@@ -3,4 +3,13 @@ VALUES ("What is the tallest building in the world as of 2018?", "Shanghai Tower
 ("The Colosseum is located in which country?", "Italy", "France", "Norway", "Germany", "Italy", "Famous Places and Landmarks"),
 ("The Great Barrier Reef is located in which country?", "Australia", "China", "Taiwan", "South Africa", "Australia", "Famous Places and Landmarks"),
 ("In which city is the world's largest medieval cathedral found?", "Paris", "Seville", "Rome", "Athens", "Seville", "Famous Places and Landmarks"),
-("Why was the White House painted white?", "White paint was the cheapest.", "Congress voted on it.", "To cover scars after a fire.", "The American people voted on it.", "To cover scars after a fire.", "Famous Places and Landmarks.");
+("Why was the White House painted white?", "White paint was the cheapest.", "Congress voted on it.", "To cover scars after a fire.", "The American people voted on it.", "To cover scars after a fire.", "Famous Places and Landmarks."),
+("What is the largest country on Earth?", "United States", "China", "Russia", "Austrailia", "Russia", "World Geography"),
+("What is the longest river on Earth?", "Amazon River", "Nile River", "Yellow River", "Mississippi River", "Amazon River", "World Geography"),
+("What is the highest point above sea level on Earth?", "Mauna Kea", "Mt Everest", "Mt Kilimanjaro", "Andes Mountains", "Mt Everest", "World Geography"),
+("What is the largest ocean on Earth?", "Atlantic Ocean", "Artic Ocean", "Pacific Ocean", "Indian Ocean", "Pacific Ocean", "World Geography"),
+("What is the largest continent?", "Antarctica", "Asia", "North America", "Africa", "Antarctica", "World Geography"),
+(),
+(),
+(),
+();
