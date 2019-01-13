@@ -11,7 +11,7 @@ var game = {
         function picker(){
             var length = trivia_db.length;
             console.log('number of trivia_db options: ', trivia_db.length)
-            var id = Math.floor(Math.random() * trivia_db.length);
+            var id = Math.floor(Math.random() * length);
             console.log('random ID:');
             console.log(id);
             function select(){
@@ -65,11 +65,14 @@ var game = {
         $(a3).appendTo(qDiv);
         $(a4).appendTo(qDiv);
         //timer
+        clearInterval(interval);
+        time = 10;
         interval = setInterval(function(){
+            console.log('interval')
             time -= 1;
             $('#timeBox').empty();
             $('#timeBox').append(time);
-            if (time === 0){
+            if (time < 0){
                 game.over();
             }
         }, 1000);
@@ -103,15 +106,15 @@ var game = {
 
 //Starts game
 $(document).ready(function(){
-    console.log('trivia_db: ')
-    console.log(trivia_db)
+    console.log('trivia_db: ');
+    console.log(trivia_db);
+    //Should make AJAX request for data and save as trivia_db
     game.questionPicker();
 });
 
 //on-click for question buttons
 $(document).on('click', '.ansBtn', function(){
     var playerAns = $(this).val();
-    clearInterval(interval);
     game.verify(playerAns);
 });
 
