@@ -4,6 +4,8 @@ var time = 10;//what should time limit be?
 var trivia; //global variable for specific trivia question
 var interval;
 var usedQ = [];
+
+//main game function
 var game = {
     questionPicker: function (){
         function picker(){
@@ -23,31 +25,29 @@ var game = {
                     console.log(trivia);
                     console.log('trivia.id:');
                     console.log(trivia.id);
-                    game.display(trivia)
+                    game.display();
+                } else if (usedQ.length === trivia_db.length){
+                    game.over();
                 } else {
-                    // for(var i = 0; i < usedQ.length; i++){
-                    //     if(trivia.id === usedQ[i]){
-                    //         console.log('picking again...')
-                    //         game.questionPicker();
-                    //     } else {
-                    //         console.log('trivia_db[id]:')
-                    //         console.log(trivia_db[id])
-                    //         trivia = trivia_db[id];
-                    //         game.display(trivia);
-                    //     }
-                    // };
-                    if(usedQ.indexOf(trivia.id)){
-                        console.log('match! Try again!');
-                    } else {
-                        game.display(trivia);
-                    }
+                    for(var i = 0; i < usedQ.length; i++){
+                        if(id === usedQ[i]){
+                            console.log(trivia.id + '!=' + usedQ[i])
+                            console.log('picking again...')
+                            game.questionPicker();
+                        } else {
+                            console.log('trivia_db[id]:')
+                            console.log(trivia_db[id])
+                            trivia = trivia_db[id];
+                            game.display(trivia);
+                        }
+                    };
                 }   
             };
             select();
         };
         picker();
     },
-    display: function(trivia){
+    display: function(){
         console.log('game.display is running...')
         var timerDiv = $('<div id = \'timer\'>timer:<div id = timeBox>10</div></div>');
         var qDiv = $('<div id = \'qDiv\'>' + trivia.question + '</div>');
@@ -56,6 +56,7 @@ var game = {
         var a2 = $('<button id = \'a2\' class = \'btn ansBtn\' value = \'' + trivia.option2 + '\'>' + trivia.option2 + '</button>')
         var a3 = $('<button id = \'a3\' class = \'btn ansBtn\' value = \'' + trivia.option3 + '\'>' + trivia.option3 + '</button>')
         var a4 = $('<button id = \'a4\' class = \'btn ansBtn\' value = \'' + trivia.option4 + '\'>' + trivia.option4 + '</button>')
+        $('#mainDiv').empty();
         $(qDiv).appendTo('#mainDiv');
         $(timerDiv).appendTo(qDiv);
         $(ansDiv).appendTo(qDiv);
@@ -68,6 +69,9 @@ var game = {
             time -= 1;
             $('#timeBox').empty();
             $('#timeBox').append(time);
+            if (time === 0){
+                game.over();
+            }
         }, 1000);
     },
     verify: function(playerAns){
@@ -83,11 +87,8 @@ var game = {
             game.over();
         } else {
             points += 1;
-            $('#mainDiv').empty();
             console.log('score: ', points);
-            clearInterval(interval);
             game.questionPicker();
-            //need to prevent repicking the same question.
         }
     },
     over: function(){
@@ -99,15 +100,18 @@ var game = {
         location.reload();
     }
 };
+
+//Starts game
 $(document).ready(function(){
     console.log('trivia_db: ')
     console.log(trivia_db)
     game.questionPicker();
 });
 
+//on-click for question buttons
 $(document).on('click', '.ansBtn', function(){
-    var playerAns = $(this).val(); //not sure if this will work for the value of the button...
-    console.log(playerAns); // we'll find out!
+    var playerAns = $(this).val();
+    clearInterval(interval);
     game.verify(playerAns);
 });
 
@@ -141,6 +145,16 @@ var trivia_db = [
         option3: "Austria",
         option4: "Australia",
         correctAnswer: "Australia",
+        category: "Geography"
+    },
+    {
+        id:3,
+        question: "What is the Capitol of Nicaragua",
+        option1: "San Salvador",
+        option2: "Leon",
+        option3: "Managua",
+        option4: "San Jose",
+        correctAnswer: "Managua",
         category: "Geography"
     }
 ];
