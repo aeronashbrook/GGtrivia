@@ -49,41 +49,21 @@ var game = {
     },
     display: function(){
         console.log('game.display is running...')
-
-        var qTitle = $('#qTitle');
-        var a1 = $('#a1');
-        var a2 = $('#a2');
-        var a3 = $('#a3');
-        var a4 = $('#a4');
-
-        $(qTitle).empty();
-        $(a1).empty();
-        $(a2).empty();
-        $(a3).empty();
-        $(a4).empty();
-
-        
-        $(qTitle).append(trivia.question);
-        $(a1).append(trivia.option1);
-        $(a2).append(trivia.option2);
-        $(a3).append(trivia.option3);
-        $(a4).append(trivia.option4);
-        // var timerDiv = $('<div id = \'timer\'>timer:<div id = timeBox>10</div></div>');
-        // var qDiv = $('<div id = \'qDiv\'>' + trivia.question + '</div>');
-        // var ansDiv = $('<div class = \'ansDiv\'></div>');
-        // var a1 = $('<button id = \'a1\' class = \'btn ansBtn\' value = \'' + trivia.option1 + '\'>' + trivia.option1 + '</button>')
-        // var a2 = $('<button id = \'a2\' class = \'btn ansBtn\' value = \'' + trivia.option2 + '\'>' + trivia.option2 + '</button>')
-        // var a3 = $('<button id = \'a3\' class = \'btn ansBtn\' value = \'' + trivia.option3 + '\'>' + trivia.option3 + '</button>')
-        // var a4 = $('<button id = \'a4\' class = \'btn ansBtn\' value = \'' + trivia.option4 + '\'>' + trivia.option4 + '</button>')
-        // $('#mainDiv').empty();
-        // $(qDiv).appendTo('#mainDiv');
-        // $(timerDiv).appendTo(qDiv);
-        // $(ansDiv).appendTo(qDiv);
-        // $(a1).appendTo(qDiv);
-        // $(a2).appendTo(qDiv);
-        // $(a3).appendTo(qDiv);
-        // $(a4).appendTo(qDiv);
-
+        var timerDiv = $('<div id = \'timer\'>timer:<div id = timeBox>10</div></div>');
+        var qDiv = $('<div id = \'qDiv\'>' + trivia.question + '</div>');
+        var ansDiv = $('<div class = \'ansDiv\'></div>');
+        var a1 = $('<button id = \'a1\' class = \'btn ansBtn\' value = \'' + trivia.option1 + '\'>' + trivia.option1 + '</button>')
+        var a2 = $('<button id = \'a2\' class = \'btn ansBtn\' value = \'' + trivia.option2 + '\'>' + trivia.option2 + '</button>')
+        var a3 = $('<button id = \'a3\' class = \'btn ansBtn\' value = \'' + trivia.option3 + '\'>' + trivia.option3 + '</button>')
+        var a4 = $('<button id = \'a4\' class = \'btn ansBtn\' value = \'' + trivia.option4 + '\'>' + trivia.option4 + '</button>')
+        $('#mainDiv').empty();
+        $(qDiv).appendTo('#mainDiv');
+        $(timerDiv).appendTo(qDiv);
+        $(ansDiv).appendTo(qDiv);
+        $(a1).appendTo(qDiv);
+        $(a2).appendTo(qDiv);
+        $(a3).appendTo(qDiv);
+        $(a4).appendTo(qDiv);
         //timer
         clearInterval(interval);
         time = 10;
@@ -134,9 +114,7 @@ $(document).ready(function(){
 
 //on-click for question buttons
 $(document).on('click', '.ansBtn', function(){
-
-    var playerAns = $(this).text().trim();
-
+    var playerAns = $(this).val();
     game.verify(playerAns);
 });
 
@@ -182,107 +160,4 @@ var trivia_db = [
         correctAnswer: "Managua",
         category: "Geography"
     }
-
 ];
-
-//Aeron's stuff
-
-var answer = question.correctAnswer;
-var thing = $("#option3").text().trim();
-console.log(thing)
-$("#option1").on("click", function(){
-    $("#option1").css("font-size", "24px");
-    correctAnswer();
-    if ($("#option1").text().trim() === answer) {
-        $("#check1").show();
-    } else {
-        $("#x1").show();
-    }
-});
-$("#option2").on("click", function(){
-    $("#option2").css("font-size", "24px");
-    correctAnswer();
-    if ($("#option2").text().trim() === answer) {
-        $("#check2").show();
-    } else {
-        $("#x2").show();
-    }
-});
-$("#option3").on("click", function(){
-    $("#option3").css("font-size", "24px");
-    correctAnswer();
-    if ($("#option3").text().trim() === answer) {
-        $("#check3").show();
-    } else {
-        $("#x3").show();
-    }
-});
-$("#option4").on("click", function(){
-    $("#option4").css("font-size", "24px");
-    correctAnswer();
-    if ($("#option4").text().trim() === answer) {
-        $("#check4").show();
-    } else {
-        $("#x4").show();
-    }
-});
-
-
-
-function correctAnswer(){
-    if ($("#option1").text().trim() === answer) {
-        $("#option1").css("color", "green");
-    } else {
-        $("#option1").css("color", "red");
-    }
-
-    if ($("#option2").text().trim() === answer) {
-        $("#option2").css("color", "green");
-    } else {
-        $("#option2").css("color", "red");
-    }
-
-    if ($("#option3").text().trim() === answer) {
-        $("#option3").css("color", "green");
-    } else {
-        $("#option3").css("color", "red");
-    }
-
-    if ($("#option4").text().trim() === answer) {
-        $("#option4").css("color", "green");
-    } else {
-        $("#option4").css("color", "red");
-    } 
-};
-
-var $loader = $('#loader'),
-    alpha = 0,
-    pi = Math.PI,
-    time = 25;
-
-function draw() {
-  alpha++;
-
-  var r = ( alpha * pi / 180 ),
-    x = Math.sin( r ) * 125,
-    y = Math.cos( r ) * - 125,
-    mid = ( alpha >= 180 ) ? 1 : 0,
-    animate = 'M 0 0 v -125 A 125 125 1 ' 
-           + mid + ' 1 ' 
-           +  x  + ' ' 
-           +  y  + ' z';
-
-    if (alpha < 360){
-      setTimeout(draw, time); // Redraw
-    }else{
-        animate = "M 0 0 v -125 A 125 125 1 1 1 -.1 -125 z";
-        correctAnswer();
-    }
-
-  loader.setAttribute( 'd', animate );
-
-};
-
-draw.call(this);
-];
-
