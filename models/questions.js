@@ -1,5 +1,8 @@
-module.exports(sequelize, DataTypes) {
-    var questions = sequelize.define("questions", {
+module.exports = function(sequelize, DataTypes) {
+    var Questions = sequelize.define("questions", {
+        id: {
+            type: DataTypes.INTEGER
+        },
         question: {
             type: DateTypes.STRING,
             validate: {
@@ -58,5 +61,5 @@ module.exports(sequelize, DataTypes) {
         }
 
     });
-    return questions;
-}
+    return Questions;
+};
