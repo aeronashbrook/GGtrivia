@@ -49,6 +49,7 @@ var game = {
     },
     display: function(){
         console.log('game.display is running...')
+
         var qTitle = $('#qTitle');
         var a1 = $('#a1');
         var a2 = $('#a2');
@@ -82,6 +83,7 @@ var game = {
         // $(a2).appendTo(qDiv);
         // $(a3).appendTo(qDiv);
         // $(a4).appendTo(qDiv);
+
         //timer
         clearInterval(interval);
         time = 10;
@@ -132,7 +134,9 @@ $(document).ready(function(){
 
 //on-click for question buttons
 $(document).on('click', '.ansBtn', function(){
+
     var playerAns = $(this).text().trim();
+
     game.verify(playerAns);
 });
 
@@ -178,6 +182,7 @@ var trivia_db = [
         correctAnswer: "Managua",
         category: "Geography"
     }
+
 ];
 
 //Aeron's stuff
@@ -279,3 +284,5 @@ function draw() {
 };
 
 draw.call(this);
+];
+
