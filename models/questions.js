@@ -1,5 +1,8 @@
 module.exports = function(sequelize, DataTypes) {
     var Questions = sequelize.define("questions", {
+        id: {
+            type: DataTypes.INTEGER
+        },
         question: {
             type: DateTypes.STRING,
             validate: {
