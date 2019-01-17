@@ -14,7 +14,10 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 allowNull: false,
             }
-        }
+        },
+        order: [
+            ['score', 'DESC']
+        ]
     });
     return Leaderboard;
 }
