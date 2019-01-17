@@ -20,10 +20,16 @@ var game = {
     questionPicker: function (){
         function picker(){
             var id;
-            $.get("/api/question", function(data){
+            // $.get("/api/question", function(data){
+            //     trivia = data;
+            //     id = data.id;
+            // });
+            $.ajax({
+                url: "/api/question",
+                method: "GET"
+            }).then(function(data){
                 trivia = data;
-                id = data.id;
-            });
+            })
             // var length = trivia_db.length;
             // console.log('number of trivia_db options: ', trivia_db.length)
             // var id = Math.floor(Math.random() * length);

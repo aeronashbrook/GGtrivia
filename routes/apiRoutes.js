@@ -2,7 +2,7 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get for Questions
-  app.get("/api/questions", function(req, res) {
+  app.get("/api/question", function(req, res) {
     db.Questions.findAll({ 
       order: [
         Sequelize.literal('RAND()')

@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "vegetable",
-    "database": "exampledb",
+    "database": "trivia",
     "host": "localhost",
     "dialect": "mysql"
   },

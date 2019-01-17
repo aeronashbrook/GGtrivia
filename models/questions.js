@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER
         },
         question: {
-            type: DateTypes.STRING,
+            type: DataTypes.STRING,
             validate: {
                 isAlphanumeric: true,
                 allowNull: false,
