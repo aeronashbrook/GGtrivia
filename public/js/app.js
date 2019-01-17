@@ -74,10 +74,10 @@ var game = {
         $(a4).empty();
  
         $(qTitle).append(trivia.question);
-        $(a1).append(trivia.option1);
-        $(a2).append(trivia.option2);
-        $(a3).append(trivia.option3);
-        $(a4).append(trivia.option4);
+        $(a1).append('<i class="fas fa-check" id="check1"></i><i class="fas fa-times" id="x1"></i>' + trivia.option1);
+        $(a2).append('<i class="fas fa-check" id="check2"></i><i class="fas fa-times" id="x2"></i>' + trivia.option2);
+        $(a3).append('<i class="fas fa-check" id="check3"></i><i class="fas fa-times" id="x3"></i>' + trivia.option3);
+        $(a4).append('<i class="fas fa-check" id="check4"></i><i class="fas fa-times" id="x4"></i>' + trivia.option4);
     },
     verify: function(playerAns){
         console.log('verifying...')
