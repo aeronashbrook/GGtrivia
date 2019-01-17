@@ -20,7 +20,7 @@ module.exports = function(app) {
   });
 
   // Post for Questions
-  app.post("/api/questions", function(req, res) {
+  app.post("/api/question", function(req, res) {
     db.Questions.create(req.body).then(function(dbQuestions) {
       res.json(dbQuestions);
     });
