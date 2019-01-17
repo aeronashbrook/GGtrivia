@@ -19,36 +19,38 @@ $("#circleTimer").circletimer({
 var game = {
     questionPicker: function (){
         function picker(){
-            var length = trivia_db.length;
-            console.log('number of trivia_db options: ', trivia_db.length)
-            var id = Math.floor(Math.random() * length);
-            console.log('random ID:');
-            console.log(id);
+            var id;
+            $.get("/api/question", function(data){
+                trivia = data;
+                id = data.id;
+            });
+            // var length = trivia_db.length;
+            // console.log('number of trivia_db options: ', trivia_db.length)
+            // var id = Math.floor(Math.random() * length);
+            // console.log('random ID:');
+            // console.log(id);
             function select(){
-                console.log('selector running...')
                 console.log('usedQ:');
                 console.log(usedQ);
                 if(usedQ.length === 0){
                     console.log('first question!')
-                    trivia = trivia_db[id];
                     console.log('trivia:');
                     console.log(trivia);
-                    console.log('trivia.id:');
-                    console.log(trivia.id);
                     game.display();
-                } else if (usedQ.length === trivia_db.length){
-                    game.over();
-                } else {
+                } 
+                // else if (usedQ.length === trivia_db.length){
+                //     //no more questions!
+                //     alert('You answered all of the questions!')
+                //     game.over();
+                // }
+                 else {
                     for(var i = 0; i < usedQ.length; i++){
                         if(id === usedQ[i]){
                             console.log(trivia.id + '!=' + usedQ[i])
-                            console.log('picking again...')
+                            console.log('Already used that question, picking again...')
                             game.questionPicker();
                         } else {
-                            console.log('trivia_db[id]:')
-                            console.log(trivia_db[id])
-                            trivia = trivia_db[id];
-                            game.display(trivia);
+                            game.display();
                         }
                     };
                 }   
@@ -109,55 +111,52 @@ var game = {
 
 //Starts game
 $(document).ready(function(){
-    console.log('trivia_db: ');
-    console.log(trivia_db);
-    //Should make AJAX request for data and save as trivia_db
     game.questionPicker();
 });
 //sample data
-var trivia_db = [
-    {
-        id:0,
-        question: "What is the Capitol of Minnesota?",
-        option1: "Minneapolis",
-        option2: "Saint Paul",
-        option3: "Saint Cloud",
-        option4: "Duluth",
-        correctAnswer: "Saint Paul",
-        category: "Geography"
-    },
-    {
-        id:1,
-        question: "What color is the sky at noon on a clear day?",
-        option1: "Red",
-        option2: "Purple",
-        option3: "Blue",
-        option4: "Orange",
-        correctAnswer: "Blue",
-        category: "Random"
-    },
-    {
-        id:2,
-        question: "Tasmania is an isolated island state belonging to which country?",
-        option1: "New Zealand",
-        option2: "Malaysia",
-        option3: "Austria",
-        option4: "Australia",
-        correctAnswer: "Australia",
-        category: "Geography"
-    },
-    {
-        id:3,
-        question: "What is the Capitol of Nicaragua",
-        option1: "San Salvador",
-        option2: "Leon",
-        option3: "Managua",
-        option4: "San Jose",
-        correctAnswer: "Managua",
-        category: "Geography"
-    }
+// var trivia_db = [
+//     {
+//         id:0,
+//         question: "What is the Capitol of Minnesota?",
+//         option1: "Minneapolis",
+//         option2: "Saint Paul",
+//         option3: "Saint Cloud",
+//         option4: "Duluth",
+//         correctAnswer: "Saint Paul",
+//         category: "Geography"
+//     },
+//     {
+//         id:1,
+//         question: "What color is the sky at noon on a clear day?",
+//         option1: "Red",
+//         option2: "Purple",
+//         option3: "Blue",
+//         option4: "Orange",
+//         correctAnswer: "Blue",
+//         category: "Random"
+//     },
+//     {
+//         id:2,
+//         question: "Tasmania is an isolated island state belonging to which country?",
+//         option1: "New Zealand",
+//         option2: "Malaysia",
+//         option3: "Austria",
+//         option4: "Australia",
+//         correctAnswer: "Australia",
+//         category: "Geography"
+//     },
+//     {
+//         id:3,
+//         question: "What is the Capitol of Nicaragua",
+//         option1: "San Salvador",
+//         option2: "Leon",
+//         option3: "Managua",
+//         option4: "San Jose",
+//         correctAnswer: "Managua",
+//         category: "Geography"
+//     }
 
-];
+// ];
 
 //Aeron's stuff
 $("#option1").on("click", function(){
