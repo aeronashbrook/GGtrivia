@@ -3,7 +3,12 @@ var db = require("../models");
 module.exports = function(app) {
   // Get for Questions
   app.get("/api/questions", function(req, res) {
-    db.Questions.findOne({}).then(function(dbQuestions) {
+    db.Questions.findAll({ 
+      order: [
+        Sequelize.literal('RAND()')
+      ],
+      limit: 1
+    }).then(function(dbQuestions) {
       res.json(dbQuestions);
     });
   });
