@@ -7,6 +7,7 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false,
         len: [1, 50]
 
+<<<<<<< HEAD
       }
     },
     score: {
@@ -21,3 +22,19 @@ module.exports = function (sequelize, DataTypes) {
   });
   return Leaderboard;
 };
+=======
+            }
+        },
+        score: {
+            type: DataTypes.INTEGER,
+            validate: {
+                allowNull: false,
+            }
+        },
+        order: [
+            ['score', 'DESC']
+        ]
+    });
+    return Leaderboard;
+}
+>>>>>>> leaderboard order
