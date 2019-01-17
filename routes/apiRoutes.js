@@ -4,7 +4,11 @@ var Sequelize = require("sequelize");
 module.exports = function(app) {
   // Get for Questions
   app.get("/api/question", function(req, res) {
+<<<<<<< HEAD
     db.questions.findAll({ 
+=======
+    db.Questions.findAll({ 
+>>>>>>> leaderboard order
       order: [
         Sequelize.literal("RAND()")
       ],
@@ -27,7 +31,7 @@ module.exports = function(app) {
   });
 
   // Post for Questions
-  app.post("/api/questions", function(req, res) {
+  app.post("/api/question", function(req, res) {
     db.Questions.create(req.body).then(function(dbQuestions) {
       res.json(dbQuestions);
     });
