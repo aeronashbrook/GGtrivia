@@ -6,14 +6,14 @@ module.exports = function(app) {
       res.render("index");
   });
 
-  // Load index page
+  // Load quiz page
   app.get("/quiz", function(req, res) {
     db.Questions.findAll({}).then(function(dbQuestions) {
       res.render("quiz");
     });
   });
 
-  // Load index page
+  // Load leaderboard page
   app.get("/leaderboard", function(req, res) {
     db.Leaderboard.findAll({}).then(function(dbLeaderbord) {
       res.render("leaderboard");
