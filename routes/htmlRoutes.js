@@ -1,22 +1,23 @@
 var db = require("../models");
+var path = require('path');
 
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-      res.render("index");
+    res.sendFile(path.join(__dirname, "../gametrivia/index.html"));
   });
 
   // Load quiz page
   app.get("/quiz", function(req, res) {
     db.Questions.findAll({}).then(function(dbQuestions) {
-      res.render("quiz");
+      res.sendFile(path.join(__dirname, "../gametrivia/index.html"));
     });
   });
 
   // Load leaderboard page
   app.get("/leaderboard", function(req, res) {
     db.Leaderboard.findAll({}).then(function(dbLeaderbord) {
-      res.render("leaderboard");
+      res.sendFile(path.join(__dirname, "../gametrivia/index.html"));
     });
   });
 

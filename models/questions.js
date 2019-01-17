@@ -1,7 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
     var Questions = sequelize.define("questions", {
         id: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            primarykey: true,
+            autoIncrement: true
         },
         question: {
             type: DataTypes.STRING,
