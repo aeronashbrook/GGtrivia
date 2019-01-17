@@ -5,6 +5,16 @@ var trivia; //global variable for specific trivia question
 var interval;
 var usedQ = [];
 
+
+$("#circleTimer").circletimer({
+    onComplete: function() {
+        answerColor();
+        setTimeout(game.over, 3000);
+    },
+    timeout: 10000
+  });
+
+
 //main game function
 var game = {
     questionPicker: function (){
@@ -44,6 +54,7 @@ var game = {
                 }   
             };
             select();
+            $("#circleTimer").circletimer("start");
         };
         picker();
     },
@@ -61,41 +72,12 @@ var game = {
         $(a2).empty();
         $(a3).empty();
         $(a4).empty();
-
-        
+ 
         $(qTitle).append(trivia.question);
         $(a1).append(trivia.option1);
         $(a2).append(trivia.option2);
         $(a3).append(trivia.option3);
         $(a4).append(trivia.option4);
-        // var timerDiv = $('<div id = \'timer\'>timer:<div id = timeBox>10</div></div>');
-        // var qDiv = $('<div id = \'qDiv\'>' + trivia.question + '</div>');
-        // var ansDiv = $('<div class = \'ansDiv\'></div>');
-        // var a1 = $('<button id = \'a1\' class = \'btn ansBtn\' value = \'' + trivia.option1 + '\'>' + trivia.option1 + '</button>')
-        // var a2 = $('<button id = \'a2\' class = \'btn ansBtn\' value = \'' + trivia.option2 + '\'>' + trivia.option2 + '</button>')
-        // var a3 = $('<button id = \'a3\' class = \'btn ansBtn\' value = \'' + trivia.option3 + '\'>' + trivia.option3 + '</button>')
-        // var a4 = $('<button id = \'a4\' class = \'btn ansBtn\' value = \'' + trivia.option4 + '\'>' + trivia.option4 + '</button>')
-        // $('#mainDiv').empty();
-        // $(qDiv).appendTo('#mainDiv');
-        // $(timerDiv).appendTo(qDiv);
-        // $(ansDiv).appendTo(qDiv);
-        // $(a1).appendTo(qDiv);
-        // $(a2).appendTo(qDiv);
-        // $(a3).appendTo(qDiv);
-        // $(a4).appendTo(qDiv);
-
-        //timer
-        clearInterval(interval);
-        time = 10;
-        interval = setInterval(function(){
-            console.log('interval')
-            time -= 1;
-            $('#timeBox').empty();
-            $('#timeBox').append(time);
-            if (time < 0){
-                game.over();
-            }
-        }, 1000);
     },
     verify: function(playerAns){
         console.log('verifying...')
@@ -111,6 +93,7 @@ var game = {
         } else {
             points += 1;
             console.log('score: ', points);
+            clearCss();
             game.questionPicker();
         }
     },
@@ -131,15 +114,6 @@ $(document).ready(function(){
     //Should make AJAX request for data and save as trivia_db
     game.questionPicker();
 });
-
-//on-click for question buttons
-$(document).on('click', '.ansBtn', function(){
-
-    var playerAns = $(this).text().trim();
-
-    game.verify(playerAns);
-});
-
 //sample data
 var trivia_db = [
     {
@@ -186,103 +160,116 @@ var trivia_db = [
 ];
 
 //Aeron's stuff
-
-var answer = question.correctAnswer;
-var thing = $("#option3").text().trim();
-console.log(thing)
 $("#option1").on("click", function(){
     $("#option1").css("font-size", "24px");
-    correctAnswer();
-    if ($("#option1").text().trim() === answer) {
+    $("#circleTimer").circletimer("stop");
+    answerColor();
+    if ($("#a1").text().trim() === trivia.correctAnswer) {
         $("#check1").show();
     } else {
         $("#x1").show();
     }
+    var playerAns = $(this).text().trim();
+    setTimeout(function(){
+        game.verify(playerAns);
+    },3000);
 });
 $("#option2").on("click", function(){
     $("#option2").css("font-size", "24px");
-    correctAnswer();
-    if ($("#option2").text().trim() === answer) {
+    $("#circleTimer").circletimer("stop");
+    answerColor();
+    if ($("#a2").text().trim() === trivia.correctAnswer) {
         $("#check2").show();
     } else {
         $("#x2").show();
     }
+    var playerAns = $(this).text().trim();
+    setTimeout(function(){
+        game.verify(playerAns);
+    },3000);
 });
 $("#option3").on("click", function(){
     $("#option3").css("font-size", "24px");
-    correctAnswer();
-    if ($("#option3").text().trim() === answer) {
+    $("#circleTimer").circletimer("stop");
+    answerColor();
+    if ($("#a3").text().trim() === trivia.correctAnswer) {
         $("#check3").show();
     } else {
         $("#x3").show();
     }
+    var playerAns = $(this).text().trim();
+    setTimeout(function(){
+        game.verify(playerAns);
+    },3000);
 });
 $("#option4").on("click", function(){
     $("#option4").css("font-size", "24px");
-    correctAnswer();
-    if ($("#option4").text().trim() === answer) {
+    $("#circleTimer").circletimer("stop");
+    answerColor();
+    if ($("#a4").text().trim() === trivia.correctAnswer) {
         $("#check4").show();
     } else {
         $("#x4").show();
     }
+    var playerAns = $(this).text().trim();
+    setTimeout(function(){
+        game.verify(playerAns);
+    },3000);
 });
 
-
-
-function correctAnswer(){
-    if ($("#option1").text().trim() === answer) {
+function answerColor(){
+    if ($("#option1").text().trim() === trivia.correctAnswer) {
         $("#option1").css("color", "green");
     } else {
         $("#option1").css("color", "red");
     }
 
-    if ($("#option2").text().trim() === answer) {
+    if ($("#option2").text().trim() === trivia.correctAnswer) {
         $("#option2").css("color", "green");
     } else {
         $("#option2").css("color", "red");
     }
 
-    if ($("#option3").text().trim() === answer) {
+    if ($("#option3").text().trim() === trivia.correctAnswer) {
         $("#option3").css("color", "green");
     } else {
         $("#option3").css("color", "red");
     }
 
-    if ($("#option4").text().trim() === answer) {
+    if ($("#option4").text().trim() === trivia.correctAnswer) {
         $("#option4").css("color", "green");
     } else {
         $("#option4").css("color", "red");
     } 
 };
 
-var $loader = $('#loader'),
-    alpha = 0,
-    pi = Math.PI,
-    time = 25;
-
-function draw() {
-  alpha++;
-
-  var r = ( alpha * pi / 180 ),
-    x = Math.sin( r ) * 125,
-    y = Math.cos( r ) * - 125,
-    mid = ( alpha >= 180 ) ? 1 : 0,
-    animate = 'M 0 0 v -125 A 125 125 1 ' 
-           + mid + ' 1 ' 
-           +  x  + ' ' 
-           +  y  + ' z';
-
-    if (alpha < 360){
-      setTimeout(draw, time); // Redraw
-    }else{
-        animate = "M 0 0 v -125 A 125 125 1 1 1 -.1 -125 z";
-        correctAnswer();
-    }
-
-  loader.setAttribute( 'd', animate );
-
+function clearCss(){
+    $("#x1").hide();
+    $("#x2").hide();
+    $("#x3").hide();
+    $("#x4").hide();
+    $("#check1").hide();
+    $("#check2").hide();
+    $("#check3").hide();
+    $("#check4").hide();
+    $(".buttonOptions").css("color", "gray");
+    $(".buttonOptions").css("font-size", "18px");
+    $(".buttonOptions").css("background color", "white");
+    $("#option1").removeClass("animated flipInX delay-1s");
+    $("#option2").removeClass("animated flipInX delay-1s");
+    $("#option3").removeClass("animated flipInX delay-1s");
+    $("#option4").removeClass("animated flipInX delay-1s");
+    $("#circleTimer").removeClass("animated fadeIn duration-1s");
+    $("#qTitle").removeClass("animated fadeIn duration-1s");
+    setTimeout(animations, 5);
 };
 
-draw.call(this);
-];
+function animations(){
+    $("#option1").addClass("animated flipInX delay-1s");
+    $("#option2").addClass("animated flipInX delay-1s");
+    $("#option3").addClass("animated flipInX delay-1s");
+    $("#option4").addClass("animated flipInX delay-1s"); 
+    $("#circleTimer").addClass("animated fadeIn duration-1s");
+    $("#qTitle").addClass("animated fadeIn duration-1s");
+};
 

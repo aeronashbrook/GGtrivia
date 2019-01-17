@@ -21,6 +21,7 @@ body {
     width: 420px;
     height: 80px;
     color: gray;
+    font-size: 18px;
 }
 #option1 {
     margin-top: 20px;
@@ -45,22 +46,17 @@ h2 {
 #check1, #check2, #check3, #check4, #x1, #x2, #x3, #x4 {
     display: none;
 }
+#a1, #a2, #a3, #a4 {
 
+}
 
-
-
-
-
+#circleTimer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90px;
+}
 svg {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 100px;
-    height: 100px;
 }
-
-#loader 
-{ fill: rgb(185, 184, 184) }
-
-#border 
-{ fill: rgb(185, 184, 184) }
