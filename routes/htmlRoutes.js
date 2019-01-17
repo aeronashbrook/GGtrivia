@@ -10,17 +10,22 @@ module.exports = function(app) {
   // Load quiz page
   app.get("/quiz", function(req, res) {
     db.Questions.findAll({}).then(function(dbQuestions) {
-      res.sendFile(path.join(__dirname, "../gametrivia/index.html"));
+      res.sendFile(path.join(__dirname, "../views/index.html"));
     });
   });
 
   // Load leaderboard page
   app.get("/leaderboard", function(req, res) {
     db.Leaderboard.findAll({}).then(function(dbLeaderbord) {
-      res.sendFile(path.join(__dirname, "../gametrivia/index.html"));
+      res.sendFile(path.join(__dirname, "../views/index.html"));
     });
   });
-
+  app.get("/public/js/app.js", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/js/app.js"));
+  });
+  app.get("/index.css", function(req, res) {
+    res.sendFile(path.join(__dirname, "../views/index.css"));
+  });
   // Load example page and pass in an example by id
   // app.get("/example/:id", function(req, res) {
   //   db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
