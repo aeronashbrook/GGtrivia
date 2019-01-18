@@ -20,9 +20,11 @@ module.exports = function(app) {
       res.sendFile(path.join(__dirname, "../views/index.html"));
     });
   });
+
   app.get("/public/js/app.js", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/js/app.js"));
   });
+
   app.get("/index.css", function(req, res) {
     res.sendFile(path.join(__dirname, "../views/index.css"));
   });
