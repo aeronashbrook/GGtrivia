@@ -15,6 +15,7 @@ CREATE TABLE questions (
     category VARCHAR(100)
 );
 
+
 CREATE TABLE leaderboard (
 	id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
