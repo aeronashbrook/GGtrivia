@@ -6,13 +6,13 @@ var interval;
 var usedQ = [];
 
 
-$("#circleTimer").circletimer({
-    onComplete: function() {
-        answerColor();
-        setTimeout(game.over, 3000);
-    },
-    timeout: 10000
-  });
+// $("#circleTimer").circletimer({
+//     onComplete: function() {
+//         answerColor();
+//         setTimeout(game.over, 3000);
+//     },
+//     timeout: 10000
+//   });
 
 
 //main game function
@@ -20,16 +20,16 @@ var game = {
     questionPicker: function (){
         function picker(){
             var id;
-            // $.get("/api/question", function(data){
-            //     trivia = data;
-            //     id = data.id;
-            // });
-            $.ajax({
-                url: "/api/question",
-                method: "GET"
-            }).then(function(data){
+            $.get("api/question", function(data){
                 trivia = data;
-            })
+                id = data.id;
+            });
+            // $.ajax({
+            //     url: "/api/question",
+            //     method: "GET"
+            // }).then(function(data){
+            //     trivia = data;
+            // })
             // var length = trivia_db.length;
             // console.log('number of trivia_db options: ', trivia_db.length)
             // var id = Math.floor(Math.random() * length);
@@ -117,6 +117,7 @@ var game = {
 
 //Starts game
 $(document).ready(function(){
+    console.log('starting app')
     game.questionPicker();
 });
 //sample data

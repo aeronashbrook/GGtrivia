@@ -5,7 +5,7 @@ module.exports = function(app) {
   app.get("/api/question", function(req, res) {
     db.Questions.findAll({ 
       order: [
-        Sequelize.literal('RAND()')
+        Sequelize.literal("RAND()")
       ],
       limit: 1
     }).then(function(dbQuestions) {
