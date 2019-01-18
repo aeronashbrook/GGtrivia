@@ -8,6 +8,9 @@ module.exports = function (sequelize, DataTypes) {
         len: [1, 50]
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> added a submit.js file for submit form
       }
     },
     score: {
@@ -21,6 +24,7 @@ module.exports = function (sequelize, DataTypes) {
     ]
   });
   return Leaderboard;
+<<<<<<< HEAD
 };
 =======
             }
@@ -38,3 +42,6 @@ module.exports = function (sequelize, DataTypes) {
     return Leaderboard;
 }
 >>>>>>> leaderboard order
+=======
+};
+>>>>>>> added a submit.js file for submit form
