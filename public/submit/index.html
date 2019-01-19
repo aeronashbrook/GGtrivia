@@ -5,18 +5,19 @@
         <title>Submit Your Own Question</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
         <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
     </head>
 
-    <body>
+<body>
+  <div class="jumbotron">
+
+      <h1>Submit a Question</h1>
       <form id="regForm" action="">
 
-      <h1>Submit Your Own Question</h1>
-
-<!-- One "tab" for each step in the form: -->
+    <!-- One "tab" for each step in the form: -->
       <div class="tab">Question:
         <p><input placeholder="Type your question here..." oninput="this.className = ''"></p>
       </div>
@@ -38,7 +39,7 @@
         </div>
       </div>
 
-<!-- Circles which indicates the steps of the form: -->
+    <!-- Circles which indicates the steps of the form: -->
       <div style="text-align:center;margin-top:40px;">
         <span class="step"></span>
         <span class="step"></span>
@@ -46,6 +47,7 @@
       </div>
 
       </form>
+  </div>
       <script src="js/main.js"></script>
     </body>
   </html>
