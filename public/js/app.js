@@ -6,13 +6,13 @@ var interval;
 var usedQ = [];
 
 
-// $("#circleTimer").circletimer({
-//     onComplete: function() {
-//         answerColor();
-//         setTimeout(game.over, 3000);
-//     },
-//     timeout: 10000
-//   });
+$("#circleTimer").circletimer({
+    onComplete: function() {
+        answerColor();
+        setTimeout(game.over, 3000);
+    },
+    timeout: 10000
+  });
 
 
 //main game function
@@ -20,16 +20,22 @@ var game = {
     questionPicker: function (){
         function picker(){
             var id;
-            $.get("api/question", function(data){
-                trivia = data;
-                id = data.id;
-            });
-            // $.ajax({
-            //     url: "/api/question",
-            //     method: "GET"
-            // }).then(function(data){
+            // $.get("api/question", function(data){
             //     trivia = data;
-            // })
+            //     id = data.id;
+            //     select();
+            //     $("#circleTimer").circletimer("start");
+            // });
+            $.ajax({
+                url: "/api/question",
+                method: "GET"
+            }).then(function(data){
+                trivia = data[0];
+                id = data.id;
+                console.log(trivia)
+                select();
+                $("#circleTimer").circletimer("start");
+            });
             // var length = trivia_db.length;
             // console.log('number of trivia_db options: ', trivia_db.length)
             // var id = Math.floor(Math.random() * length);
@@ -61,8 +67,9 @@ var game = {
                     };
                 }   
             };
-            select();
-            $("#circleTimer").circletimer("start");
+            //Moved up because of async
+            // select();
+            // $("#circleTimer").circletimer("start");
         };
         picker();
     },
@@ -120,6 +127,13 @@ $(document).ready(function(){
     console.log('starting app')
     game.questionPicker();
 });
+
+//on-click for question buttons
+$(document).on('click', '.ansBtn', function(){
+    var playerAns = $(this).text().trim();
+    game.verify(playerAns);
+});
+
 //sample data
 // var trivia_db = [
 //     {
