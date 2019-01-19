@@ -24,7 +24,13 @@ module.exports = function(app) {
   // Get for Leaderboard
   app.get("/api/leaderboard", function(req, res) {
     db.Leaderboard.findAll({
+<<<<<<< HEAD
 
+=======
+      order: [
+        ["score", "DESC"]
+      ]
+>>>>>>> fixed leaderboard order I think
     }).then(function(dbLeaderboard) {
       res.json(dbLeaderboard);
     });

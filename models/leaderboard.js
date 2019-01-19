@@ -18,12 +18,10 @@ module.exports = function (sequelize, DataTypes) {
       validate: {
         allowNull: false,
       }
-    },
-    order: [
-      ["score", "DESC"]
-    ]
+    }
   });
   return Leaderboard;
+<<<<<<< HEAD
 <<<<<<< HEAD
 };
 =======
@@ -45,3 +43,6 @@ module.exports = function (sequelize, DataTypes) {
 =======
 };
 >>>>>>> added a submit.js file for submit form
+=======
+};
+>>>>>>> fixed leaderboard order I think
