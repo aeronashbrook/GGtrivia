@@ -16,10 +16,15 @@ module.exports = function(app) {
   });
 
   // Load leaderboard page
-  app.get("/leaderboard", function(req, res) {
-    db.Leaderboard.findAll({}).then(function(dbLeaderbord) {
-      res.sendFile(path.join(__dirname, "public/index.html"));
-    });
+  // app.get("/leaderboard", function(req, res) {
+    // db.Leaderboard.findAll({}).then(function(dbleaderbord) {
+    //   res.sendFile(path.join(__dirname, "public/leaderboard.html"));
+    // });
+  //   res.sendFile(path.join(__dirname, "public/leaderboard.html"));
+  // });
+
+  app.get("/submit", function(req, res) {
+    res.sendFile(path.join(__dirname, "public/submit.html"));
   });
 
   // Load example page and pass in an example by id

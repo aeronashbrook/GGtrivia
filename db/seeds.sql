@@ -104,3 +104,5 @@ VALUES ("What is the tallest building in the world as of 2018?", "Shanghai Tower
 ("What American city produces most of the egg rolls sold in grocery stores in the United States?", "San Fransisco, CA", "Houston, TX", "Boston, MA", "Fort Myers, FL", "Houston, TX", "Food"),
 ("What was the first of H.J. Heinz' '57 varieties'?", "Mustard", "Ketchup", "Horseradish", "Vinegar", "Horseradish", "Food"),
 ("What hit the market alongside spinach as the first frozen veggies?", "Carrots", "Green Beans", "Corn", "Peas", "Peas", "Food");
+
+SELECT * FROM questions;
