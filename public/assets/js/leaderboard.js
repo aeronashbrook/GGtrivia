@@ -6,7 +6,7 @@ $(document).ready(function(){
         url: "/api/leaderboard",
         method: "GET"
     }).then(function(data){
-        leaderboardSubmit = data[0];
+        leaderboardSubmit = data;
         id = data.id;
         console.log(leaderboardSubmit);
     });

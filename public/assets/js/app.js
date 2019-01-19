@@ -1,7 +1,6 @@
 // var trivia_db = questions; // change when JawsDB is up and running
 var points = 0;//start with 0 points.
 var trivia; //global variable for specific trivia question
-var interval;
 var usedQ = [];
 
 
@@ -20,12 +19,6 @@ var game = {
     questionPicker: function (){
         function picker(){
             var id;
-            // $.get("api/question", function(data){
-            //     trivia = data;
-            //     id = data.id;
-            //     select();
-            //     $("#circleTimer").circletimer("start");
-            // });
             $.ajax({
                 url: "/api/question",
                 method: "GET"
@@ -35,11 +28,6 @@ var game = {
                 console.log(trivia)
                 select();
             });
-            // var length = trivia_db.length;
-            // console.log('number of trivia_db options: ', trivia_db.length)
-            // var id = Math.floor(Math.random() * length);
-            // console.log('random ID:');
-            // console.log(id);
             function select(){
                 console.log('usedQ:');
                 console.log(usedQ);
@@ -48,12 +36,7 @@ var game = {
                     console.log('trivia:');
                     console.log(trivia);
                     game.display();
-                } 
-                // else if (usedQ.length === trivia_db.length){
-                //     //no more questions!
-                //     alert('You answered all of the questions!')
-                //     game.over();
-                // }
+                }
                  else {
                     for(var i = 0; i < usedQ.length; i++){
                         if(id === usedQ[i]){
@@ -66,9 +49,6 @@ var game = {
                     };
                 }   
             };
-            //Moved up because of async
-            // select();
-            // $("#circleTimer").circletimer("start");
         };
         picker();
     },
