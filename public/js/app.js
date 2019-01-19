@@ -6,13 +6,13 @@ var interval;
 var usedQ = [];
 
 
-// $("#circleTimer").circletimer({
-//     onComplete: function() {
-//         answerColor();
-//         setTimeout(game.over, 3000);
-//     },
-//     timeout: 10000
-//   });
+$("#circleTimer").circletimer({
+    onComplete: function() {
+        answerColor();
+        setTimeout(game.over, 3000);
+    },
+    timeout: 10000
+  });
 
 
 //main game function
