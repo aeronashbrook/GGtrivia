@@ -127,6 +127,13 @@ $(document).ready(function(){
     console.log('starting app')
     game.questionPicker();
 });
+
+//on-click for question buttons
+$(document).on('click', '.ansBtn', function(){
+    var playerAns = $(this).text().trim();
+    game.verify(playerAns);
+});
+
 //sample data
 // var trivia_db = [
 //     {
