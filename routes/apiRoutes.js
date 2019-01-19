@@ -1,6 +1,7 @@
 var db = require("../models");
 var Sequelize = require("sequelize");
 
+console.log(db);
 module.exports = function(app) {
   // Get for Questions
   app.get("/api/question", function(req, res) {

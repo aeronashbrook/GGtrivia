@@ -34,7 +34,6 @@ var game = {
                 id = data.id;
                 console.log(trivia)
                 select();
-                $("#circleTimer").circletimer("start");
             });
             // var length = trivia_db.length;
             // console.log('number of trivia_db options: ', trivia_db.length)
@@ -75,7 +74,7 @@ var game = {
     },
     display: function(){
         console.log('game.display is running...')
-
+        $("#circleTimer").circletimer("start");
         var qTitle = $('#qTitle');
         var a1 = $('#a1');
         var a2 = $('#a2');
@@ -100,7 +99,7 @@ var game = {
         usedQ.push(trivia.id);
         console.log('trivia.id:');
         console.log(trivia.id);
-        time = 10;
+        // time = 10;
         if (actualAnswer != playerAns){
             console.log('game.over()')
             console.log(actualAnswer, ' != ', playerAns)
