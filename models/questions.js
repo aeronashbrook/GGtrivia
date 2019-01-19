@@ -1,5 +1,24 @@
 module.exports = function(sequelize, DataTypes) {
   var Questions = sequelize.define("questions", {
+    // id: {
+    //   type: DataTypes.INTEGER,
+    //   primaryKey: true,
+    //   validate: {
+    //     allowNull:false
+    //   }
+    // },
+    // createdAt: {
+    //   type: DataTypes.DATE,
+    //   validate: {
+    //     allowNull:false
+    //   }
+    // },
+    // updatedAt: {
+    //   type: DataTypes.DATE,
+    //   validate: {
+    //     allowNull:false
+    //   }
+    // },
     question: {
       type: DataTypes.STRING,
       validate: {
@@ -56,6 +75,8 @@ module.exports = function(sequelize, DataTypes) {
         len: [1,50]
       }
     }
+  },{
+    timestamps: false
   });
   return Questions;
 };

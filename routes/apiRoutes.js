@@ -1,6 +1,6 @@
 var db = require("../models");
 var Sequelize = require("sequelize");
-// console.log(db);
+
 module.exports = function(app) {
   // Get for Questions
   app.get("/api/question", function(req, res) {
@@ -11,7 +11,7 @@ module.exports = function(app) {
       limit: 1
     }).then(function(dbQuestions) {
       console.log('dbQuestions =')
-      console.log(dbQuestions);
+      console.log(JSON.stringify(dbQuestions[0]));
       res.json(dbQuestions);
     }).catch(function(err){
       console.log(err);

@@ -30,8 +30,9 @@ var game = {
                 url: "/api/question",
                 method: "GET"
             }).then(function(data){
-                trivia = data;
+                trivia = data[0];
                 id = data.id;
+                console.log(trivia)
                 select();
                 $("#circleTimer").circletimer("start");
             });
