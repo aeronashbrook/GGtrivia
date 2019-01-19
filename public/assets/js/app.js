@@ -1,7 +1,10 @@
 var points = 0;//start with 0 points.
 
 var trivia; //global variable for specific trivia question
+<<<<<<< HEAD
 //var interval;
+=======
+>>>>>>> minor changes to get leaderboard sort of working -get request working
 var usedQ = [];
 
 
@@ -37,7 +40,12 @@ var game = {
                     console.log('trivia:');
                     console.log(trivia);
                     game.display();
+<<<<<<< HEAD
                 } else {
+=======
+                }
+                 else {
+>>>>>>> minor changes to get leaderboard sort of working -get request working
                     for(var i = 0; i < usedQ.length; i++){
                         if(id === usedQ[i]){
                             console.log(trivia.id + '!=' + usedQ[i])
