@@ -1,54 +1,54 @@
 // var trivia_db = questions; // change when JawsDB is up and running
 var points = 0;//start with 0 points.
-var time = 10;//what should time limit be?
+//var time = 10;//what should time limit be?
 var trivia; //global variable for specific trivia question
-var interval;
+//var interval;
 var usedQ = [];
 
 
 $("#circleTimer").circletimer({
-    onComplete: function() {
-        answerColor();
-        setTimeout(game.over, 3000);
-    },
-    timeout: 10000
-  });
+  onComplete: function() {
+    answerColor();
+    setTimeout(game.over, 3000);
+  },
+  timeout: 10000
+});
 
 
 //main game function
 var game = {
-    questionPicker: function (){
-        function picker(){
-            var id;
-            // $.get("api/question", function(data){
-            //     trivia = data;
-            //     id = data.id;
-            //     select();
-            //     $("#circleTimer").circletimer("start");
-            // });
-            $.ajax({
-                url: "/api/question",
-                method: "GET"
-            }).then(function(data){
-                trivia = data[0];
-                id = data.id;
-                console.log(trivia)
-                select();
-            });
-            // var length = trivia_db.length;
-            // console.log('number of trivia_db options: ', trivia_db.length)
-            // var id = Math.floor(Math.random() * length);
-            // console.log('random ID:');
-            // console.log(id);
-            function select(){
-                console.log('usedQ:');
-                console.log(usedQ);
-                if(usedQ.length === 0){
-                    console.log('first question!')
-                    console.log('trivia:');
-                    console.log(trivia);
-                    game.display();
-                } 
+  questionPicker: function (){
+    function picker(){
+      var id;
+      // $.get("api/question", function(data){
+      //     trivia = data;
+      //     id = data.id;
+      //     select();
+      //     $("#circleTimer").circletimer("start");
+      // });
+      $.ajax({
+        url: "/api/question",
+        method: "GET"
+      }).then(function(data){
+        trivia = data[0];
+        id = data.id;
+        console.log(trivia);
+        select();
+      });
+      // var length = trivia_db.length;
+      // console.log('number of trivia_db options: ', trivia_db.length)
+      // var id = Math.floor(Math.random() * length);
+      // console.log('random ID:');
+      // console.log(id);
+      function select(){
+        console.log("usedQ: ");
+        console.log(usedQ);
+        if(usedQ.length === 0){
+          console.log("first question!");
+          console.log("trivia:");
+          console.log(trivia);
+          game.display();
+        } 
                 // else if (usedQ.length === trivia_db.length){
                 //     //no more questions!
                 //     alert('You answered all of the questions!')
@@ -76,10 +76,10 @@ var game = {
         console.log('game.display is running...')
         $("#circleTimer").circletimer("start");
         var qTitle = $('#qTitle');
-        var a1 = $('#a1');
-        var a2 = $('#a2');
-        var a3 = $('#a3');
-        var a4 = $('#a4');
+        var a1 = $("#a1");
+        var a2 = $("#a2");
+        var a3 = $("#a3");
+        var a4 = $("#a4");
 
         $(qTitle).empty();
         $(a1).empty();
@@ -113,7 +113,6 @@ var game = {
     },
     over: function(){
         $('#mainDiv').empty();
-        alert('Game over! Your final score was ' + points);
         $("#questionDiv").hide();
         $("#gameOver").show();
         $("#displayScore").text("Your final score was: " + points);
@@ -128,57 +127,6 @@ $(document).ready(function(){
     console.log('starting app')
     game.questionPicker();
 });
-
-//on-click for question buttons
-$(document).on('click', '.ansBtn', function(){
-    var playerAns = $(this).text().trim();
-    game.verify(playerAns);
-});
-
-//sample data
-// var trivia_db = [
-//     {
-//         id:0,
-//         question: "What is the Capitol of Minnesota?",
-//         option1: "Minneapolis",
-//         option2: "Saint Paul",
-//         option3: "Saint Cloud",
-//         option4: "Duluth",
-//         correctAnswer: "Saint Paul",
-//         category: "Geography"
-//     },
-//     {
-//         id:1,
-//         question: "What color is the sky at noon on a clear day?",
-//         option1: "Red",
-//         option2: "Purple",
-//         option3: "Blue",
-//         option4: "Orange",
-//         correctAnswer: "Blue",
-//         category: "Random"
-//     },
-//     {
-//         id:2,
-//         question: "Tasmania is an isolated island state belonging to which country?",
-//         option1: "New Zealand",
-//         option2: "Malaysia",
-//         option3: "Austria",
-//         option4: "Australia",
-//         correctAnswer: "Australia",
-//         category: "Geography"
-//     },
-//     {
-//         id:3,
-//         question: "What is the Capitol of Nicaragua",
-//         option1: "San Salvador",
-//         option2: "Leon",
-//         option3: "Managua",
-//         option4: "San Jose",
-//         correctAnswer: "Managua",
-//         category: "Geography"
-//     }
-
-// ];
 
 //Aeron's stuff
 $("#option1").on("click", function(){
@@ -277,49 +225,49 @@ function answerColor(){
 };
 
 function clearCss(){
-    $("#x1").hide();
-    $("#x2").hide();
-    $("#x3").hide();
-    $("#x4").hide();
-    $("#check1").hide();
-    $("#check2").hide();
-    $("#check3").hide();
-    $("#check4").hide();
-    $(".buttonOptions").css("color", "gray");
-    $(".buttonOptions").css("font-size", "18px");
-    $(".buttonOptions").css("background color", "white");
-    $("#option1").removeClass("animated flipOutX");
-    $("#option2").removeClass("animated flipOutX");
-    $("#option3").removeClass("animated flipOutX");
-    $("#option4").removeClass("animated flipOutX");
-    $("#circleTimer").removeClass("animated fadeOut duration-1s");
-    $("#qTitle").removeClass("animated fadeOut duration-1s");
-    setTimeout(animations, 1);
-};
+  $("#x1").hide();
+  $("#x2").hide();
+  $("#x3").hide();
+  $("#x4").hide();
+  $("#check1").hide();
+  $("#check2").hide();
+  $("#check3").hide();
+  $("#check4").hide();
+  $(".buttonOptions").css("color", "gray");
+  $(".buttonOptions").css("font-size", "18px");
+  $(".buttonOptions").css("background color", "white");
+  $("#option1").removeClass("animated flipOutX");
+  $("#option2").removeClass("animated flipOutX");
+  $("#option3").removeClass("animated flipOutX");
+  $("#option4").removeClass("animated flipOutX");
+  $("#circleTimer").removeClass("animated fadeOut duration-1s");
+  $("#qTitle").removeClass("animated fadeOut duration-1s");
+  setTimeout(animations, 1);
+}
 function animations(){
-    $("#option1").addClass("animated flipInX delay-1s");
-    $("#option2").addClass("animated flipInX delay-1s");
-    $("#option3").addClass("animated flipInX delay-1s");
-    $("#option4").addClass("animated flipInX delay-1s"); 
-    $("#circleTimer").addClass("animated fadeIn duration-1s");
-    $("#qTitle").addClass("animated fadeIn duration-1s");
-};
+  $("#option1").addClass("animated flipInX delay-1s");
+  $("#option2").addClass("animated flipInX delay-1s");
+  $("#option3").addClass("animated flipInX delay-1s");
+  $("#option4").addClass("animated flipInX delay-1s"); 
+  $("#circleTimer").addClass("animated fadeIn duration-1s");
+  $("#qTitle").addClass("animated fadeIn duration-1s");
+}
 function startExit() {
-    $("#option1").removeClass("animated flipInX delay-1s");
-    $("#option2").removeClass("animated flipInX delay-1s");
-    $("#option3").removeClass("animated flipInX delay-1s");
-    $("#option4").removeClass("animated flipInX delay-1s");
-    $("#circleTimer").removeClass("animated fadeIn duration-1s");
-    $("#qTitle").removeClass("animated fadeIn duration-1s");
-    setTimeout(exitAni, 1);
+  $("#option1").removeClass("animated flipInX delay-1s");
+  $("#option2").removeClass("animated flipInX delay-1s");
+  $("#option3").removeClass("animated flipInX delay-1s");
+  $("#option4").removeClass("animated flipInX delay-1s");
+  $("#circleTimer").removeClass("animated fadeIn duration-1s");
+  $("#qTitle").removeClass("animated fadeIn duration-1s");
+  setTimeout(exitAni, 1);
 }
 function exitAni(){
-    $("#option1").addClass("animated flipOutX");
-    $("#option2").addClass("animated flipOutX");
-    $("#option3").addClass("animated flipOutX");
-    $("#option4").addClass("animated flipOutX");
-    $("#circleTimer").addClass("animated fadeOut duration-1s");
-    $("#qTitle").addClass("animated fadeOut duration-1s");
+  $("#option1").addClass("animated flipOutX");
+  $("#option2").addClass("animated flipOutX");
+  $("#option3").addClass("animated flipOutX");
+  $("#option4").addClass("animated flipOutX");
+  $("#circleTimer").addClass("animated fadeOut duration-1s");
+  $("#qTitle").addClass("animated fadeOut duration-1s");
 }
 
 
