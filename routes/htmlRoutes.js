@@ -11,7 +11,7 @@ module.exports = function(app) {
   app.get("/quiz", function(req, res) {
     //do we need the findAll?
     db.Questions.findAll({}).then(function(dbQuestions) {
-      res.sendFile(path.join(__dirname, "public/index.html"));
+      res.sendFile(path.join(__dirname, "public/game.html"));
     });
   });
 
