@@ -100,10 +100,12 @@ var game = {
     over: function(){
         $('#mainDiv').empty();
         alert('Game over! Your final score was ' + points);
-        //insert actual game ending here.
-        //go back to home?
+        $("#questionDiv").hide();
+        $("#gameOver").show();
+        $("#displayScore").text("Your final score was: " + points);
+        var username = $("#usernameInput").val().trim();
+        //post score to database
         score = 0;
-        location.reload();
     }
 };
 
@@ -171,8 +173,11 @@ $("#option1").on("click", function(){
     }
     var playerAns = $(this).text().trim();
     setTimeout(function(){
+        startExit();
+    },2500);
+    setTimeout(function(){
         game.verify(playerAns);
-    },3000);
+    },3550);
 });
 $("#option2").on("click", function(){
     $("#option2").css("font-size", "24px");
@@ -185,8 +190,11 @@ $("#option2").on("click", function(){
     }
     var playerAns = $(this).text().trim();
     setTimeout(function(){
+        startExit();
+    },2500);
+    setTimeout(function(){
         game.verify(playerAns);
-    },3000);
+    },3550);
 });
 $("#option3").on("click", function(){
     $("#option3").css("font-size", "24px");
@@ -199,8 +207,11 @@ $("#option3").on("click", function(){
     }
     var playerAns = $(this).text().trim();
     setTimeout(function(){
+        startExit();
+    },2500);
+    setTimeout(function(){
         game.verify(playerAns);
-    },3000);
+    },3550);
 });
 $("#option4").on("click", function(){
     $("#option4").css("font-size", "24px");
@@ -213,8 +224,11 @@ $("#option4").on("click", function(){
     }
     var playerAns = $(this).text().trim();
     setTimeout(function(){
+        startExit();
+    },2500);
+    setTimeout(function(){
         game.verify(playerAns);
-    },3000);
+    },3550);
 });
 
 function answerColor(){
@@ -255,15 +269,14 @@ function clearCss(){
     $(".buttonOptions").css("color", "gray");
     $(".buttonOptions").css("font-size", "18px");
     $(".buttonOptions").css("background color", "white");
-    $("#option1").removeClass("animated flipInX delay-1s");
-    $("#option2").removeClass("animated flipInX delay-1s");
-    $("#option3").removeClass("animated flipInX delay-1s");
-    $("#option4").removeClass("animated flipInX delay-1s");
-    $("#circleTimer").removeClass("animated fadeIn duration-1s");
-    $("#qTitle").removeClass("animated fadeIn duration-1s");
-    setTimeout(animations, 5);
+    $("#option1").removeClass("animated flipOutX");
+    $("#option2").removeClass("animated flipOutX");
+    $("#option3").removeClass("animated flipOutX");
+    $("#option4").removeClass("animated flipOutX");
+    $("#circleTimer").removeClass("animated fadeOut duration-1s");
+    $("#qTitle").removeClass("animated fadeOut duration-1s");
+    setTimeout(animations, 1);
 };
-
 function animations(){
     $("#option1").addClass("animated flipInX delay-1s");
     $("#option2").addClass("animated flipInX delay-1s");
@@ -272,4 +285,22 @@ function animations(){
     $("#circleTimer").addClass("animated fadeIn duration-1s");
     $("#qTitle").addClass("animated fadeIn duration-1s");
 };
+function startExit() {
+    $("#option1").removeClass("animated flipInX delay-1s");
+    $("#option2").removeClass("animated flipInX delay-1s");
+    $("#option3").removeClass("animated flipInX delay-1s");
+    $("#option4").removeClass("animated flipInX delay-1s");
+    $("#circleTimer").removeClass("animated fadeIn duration-1s");
+    $("#qTitle").removeClass("animated fadeIn duration-1s");
+    setTimeout(exitAni, 1);
+}
+function exitAni(){
+    $("#option1").addClass("animated flipOutX");
+    $("#option2").addClass("animated flipOutX");
+    $("#option3").addClass("animated flipOutX");
+    $("#option4").addClass("animated flipOutX");
+    $("#circleTimer").addClass("animated fadeOut duration-1s");
+    $("#qTitle").addClass("animated fadeOut duration-1s");
+}
+
 

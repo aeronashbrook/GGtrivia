@@ -8,7 +8,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10%;
-    margin-top: 10%;
+    margin-top: 5%;
     background-color: rgba(255, 255, 255, 0.377);
 }
 
@@ -47,8 +47,29 @@ h2 {
     display: none;
     margin-right: 8px;
 }
-#a1, #a2, #a3, #a4 {
-
+#gameOver {
+    
+}
+#gameOvertitle {
+    color: gray;
+    font-size: 44px;
+    text-align: center;
+    margin-bottom: 80px;
+}
+#displayScore {
+    color: gray;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 80px;
+}
+#questionDiv {
+    display: none;
+}
+#form {
+    margin-left: auto;
+    margin-right: auto;
+    width: 329px;
+    margin-bottom: 120px;
 }
 
 #circleTimer {
