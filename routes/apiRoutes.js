@@ -20,7 +20,9 @@ module.exports = function(app) {
   // Get for Leaderboard
   app.get("/api/leaderboard", function(req, res) {
     db.Leaderboard.findAll({
-
+      order: [
+        ["score", "DESC"]
+      ]
     }).then(function(dbLeaderboard) {
       res.json(dbLeaderboard);
     });
