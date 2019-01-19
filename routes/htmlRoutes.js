@@ -18,7 +18,7 @@ module.exports = function(app) {
   // Load leaderboard page
   app.get("/leaderboard", function(req, res) {
     db.Leaderboard.findAll({}).then(function(dbLeaderbord) {
-      res.sendFile(path.join(__dirname, "public/index.html"));
+      res.sendFile(path.join(__dirname, "public/leaderboard.html"));
     });
   });
 
