@@ -1,21 +1,25 @@
-// var trivia_db = questions; // change when JawsDB is up and running
 var points = 0;//start with 0 points.
+
 var trivia; //global variable for specific trivia question
+<<<<<<< HEAD
+=======
+//var interval;
+>>>>>>> 187eaef32bd696bc58bcd4d548ad2ddfcd075a3d
 var usedQ = [];
 
 
 $("#circleTimer").circletimer({
-    onComplete: function() {
-        answerColor();
-        console.log("this is dumb");
-        setTimeout(game.over, 3000);
-    },
-    timeout: 10000
-  });
 
+  onComplete: function() {
+    answerColor();
+    setTimeout(game.over, 3000);
+  },
+  timeout: 10000
+});
 
 //main game function
 var game = {
+
     questionPicker: function (){
         function picker(){
             var id;
@@ -56,10 +60,10 @@ var game = {
         console.log('game.display is running...')
         $("#circleTimer").circletimer("start");
         var qTitle = $('#qTitle');
-        var a1 = $('#a1');
-        var a2 = $('#a2');
-        var a3 = $('#a3');
-        var a4 = $('#a4');
+        var a1 = $("#a1");
+        var a2 = $("#a2");
+        var a3 = $("#a3");
+        var a4 = $("#a4");
 
         $(qTitle).empty();
         $(a1).empty();
@@ -79,7 +83,6 @@ var game = {
         usedQ.push(trivia.id);
         console.log('trivia.id:');
         console.log(trivia.id);
-        // time = 10;
         if (actualAnswer != playerAns){
             console.log('game.over()')
             console.log(actualAnswer, ' != ', playerAns)
@@ -221,49 +224,49 @@ function answerColor(){
 };
 
 function clearCss(){
-    $("#x1").hide();
-    $("#x2").hide();
-    $("#x3").hide();
-    $("#x4").hide();
-    $("#check1").hide();
-    $("#check2").hide();
-    $("#check3").hide();
-    $("#check4").hide();
-    $(".buttonOptions").css("color", "gray");
-    $(".buttonOptions").css("font-size", "18px");
-    $(".buttonOptions").css("background color", "white");
-    $("#option1").removeClass("animated flipOutX");
-    $("#option2").removeClass("animated flipOutX");
-    $("#option3").removeClass("animated flipOutX");
-    $("#option4").removeClass("animated flipOutX");
-    $("#circleTimer").removeClass("animated fadeOut duration-1s");
-    $("#qTitle").removeClass("animated fadeOut duration-1s");
-    setTimeout(animations, 1);
-};
+  $("#x1").hide();
+  $("#x2").hide();
+  $("#x3").hide();
+  $("#x4").hide();
+  $("#check1").hide();
+  $("#check2").hide();
+  $("#check3").hide();
+  $("#check4").hide();
+  $(".buttonOptions").css("color", "gray");
+  $(".buttonOptions").css("font-size", "18px");
+  $(".buttonOptions").css("background color", "white");
+  $("#option1").removeClass("animated flipOutX");
+  $("#option2").removeClass("animated flipOutX");
+  $("#option3").removeClass("animated flipOutX");
+  $("#option4").removeClass("animated flipOutX");
+  $("#circleTimer").removeClass("animated fadeOut duration-1s");
+  $("#qTitle").removeClass("animated fadeOut duration-1s");
+  setTimeout(animations, 1);
+}
 function animations(){
-    $("#option1").addClass("animated flipInX delay-1s");
-    $("#option2").addClass("animated flipInX delay-1s");
-    $("#option3").addClass("animated flipInX delay-1s");
-    $("#option4").addClass("animated flipInX delay-1s"); 
-    $("#circleTimer").addClass("animated fadeIn duration-1s");
-    $("#qTitle").addClass("animated fadeIn duration-1s");
-};
+  $("#option1").addClass("animated flipInX delay-1s");
+  $("#option2").addClass("animated flipInX delay-1s");
+  $("#option3").addClass("animated flipInX delay-1s");
+  $("#option4").addClass("animated flipInX delay-1s"); 
+  $("#circleTimer").addClass("animated fadeIn duration-1s");
+  $("#qTitle").addClass("animated fadeIn duration-1s");
+}
 function startExit() {
-    $("#option1").removeClass("animated flipInX delay-1s");
-    $("#option2").removeClass("animated flipInX delay-1s");
-    $("#option3").removeClass("animated flipInX delay-1s");
-    $("#option4").removeClass("animated flipInX delay-1s");
-    $("#circleTimer").removeClass("animated fadeIn duration-1s");
-    $("#qTitle").removeClass("animated fadeIn duration-1s");
-    setTimeout(exitAni, 1);
+  $("#option1").removeClass("animated flipInX delay-1s");
+  $("#option2").removeClass("animated flipInX delay-1s");
+  $("#option3").removeClass("animated flipInX delay-1s");
+  $("#option4").removeClass("animated flipInX delay-1s");
+  $("#circleTimer").removeClass("animated fadeIn duration-1s");
+  $("#qTitle").removeClass("animated fadeIn duration-1s");
+  setTimeout(exitAni, 1);
 }
 function exitAni(){
-    $("#option1").addClass("animated flipOutX");
-    $("#option2").addClass("animated flipOutX");
-    $("#option3").addClass("animated flipOutX");
-    $("#option4").addClass("animated flipOutX");
-    $("#circleTimer").addClass("animated fadeOut duration-1s");
-    $("#qTitle").addClass("animated fadeOut duration-1s");
+  $("#option1").addClass("animated flipOutX");
+  $("#option2").addClass("animated flipOutX");
+  $("#option3").addClass("animated flipOutX");
+  $("#option4").addClass("animated flipOutX");
+  $("#circleTimer").addClass("animated fadeOut duration-1s");
+  $("#qTitle").addClass("animated fadeOut duration-1s");
 }
 
 
