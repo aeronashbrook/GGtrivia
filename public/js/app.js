@@ -20,16 +20,21 @@ var game = {
     questionPicker: function (){
         function picker(){
             var id;
-            $.get("api/question", function(data){
+            // $.get("api/question", function(data){
+            //     trivia = data;
+            //     id = data.id;
+            //     select();
+            //     $("#circleTimer").circletimer("start");
+            // });
+            $.ajax({
+                url: "/api/question",
+                method: "GET"
+            }).then(function(data){
                 trivia = data;
                 id = data.id;
+                select();
+                $("#circleTimer").circletimer("start");
             });
-            // $.ajax({
-            //     url: "/api/question",
-            //     method: "GET"
-            // }).then(function(data){
-            //     trivia = data;
-            // })
             // var length = trivia_db.length;
             // console.log('number of trivia_db options: ', trivia_db.length)
             // var id = Math.floor(Math.random() * length);
@@ -61,8 +66,9 @@ var game = {
                     };
                 }   
             };
-            select();
-            $("#circleTimer").circletimer("start");
+            //Moved up because of async
+            // select();
+            // $("#circleTimer").circletimer("start");
         };
         picker();
     },

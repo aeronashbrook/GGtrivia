@@ -1,20 +1,27 @@
 var db = require("../models");
-
+var Sequelize = require("sequelize");
+// console.log(db);
 module.exports = function(app) {
   // Get for Questions
   app.get("/api/question", function(req, res) {
-    db.Questions.findAll({ 
+    db.questions.findAll({ 
       order: [
         Sequelize.literal("RAND()")
       ],
       limit: 1
     }).then(function(dbQuestions) {
+      console.log('dbQuestions =')
+      console.log(dbQuestions);
       res.json(dbQuestions);
+    }).catch(function(err){
+      console.log(err);
     });
   });
   // Get for Leaderboard
   app.get("/api/leaderboard", function(req, res) {
-    db.Leaderboard.findAll({}).then(function(dbLeaderboard) {
+    db.Leaderboard.findAll({
+
+    }).then(function(dbLeaderboard) {
       res.json(dbLeaderboard);
     });
   });

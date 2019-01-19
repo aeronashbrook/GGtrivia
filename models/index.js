@@ -10,6 +10,8 @@ var db = {};
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
+  // console.log('sequelize created, if statement:');
+  // console.log(sequelize);
 } else {
   var sequelize = new Sequelize(
     config.database,
@@ -17,6 +19,8 @@ if (config.use_env_variable) {
     config.password,
     config
   );
+  // console.log('sequelize created, else statement:');
+  // console.log(sequelize);
 }
 
 fs.readdirSync(__dirname)
@@ -38,5 +42,11 @@ Object.keys(db).forEach(function(modelName) {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+// console.log('db.sequelize:');
+// console.log(sequelize);
+
+// console.log('db.Sequelize:');
+// console.log(Sequelize);
 
 module.exports = db;
