@@ -22,16 +22,16 @@ module.exports = function(app) {
       res.sendFile(path.join(__dirname, "public/leaderboard.html"));
     });
 
-  // app.get("/leaderboard", function(req, res) {
+    // app.get("/leaderboard", function(req, res) {
     // db.Leaderboard.findAll({}).then(function(dbleaderbord) {
     //   res.sendFile(path.join(__dirname, "public/leaderboard.html"));
     // });
-  //   res.sendFile(path.join(__dirname, "public/leaderboard.html"));
-  // });
+    //   res.sendFile(path.join(__dirname, "public/leaderboard.html"));
+    // });
 
-  app.get("/submit", function(req, res) {
-    res.sendFile(path.join(__dirname, "public/submit.html"));
-  });
+    app.get("/submit", function(req, res) {
+      res.sendFile(path.join(__dirname, "public/submit.html"));
+    });
 
   // Load example page and pass in an example by id
   // app.get("/example/:id", function(req, res) {
@@ -46,4 +46,6 @@ module.exports = function(app) {
   // app.get("*", function(req, res) {
   //   res.render("404");
   // });
+
+  });
 };

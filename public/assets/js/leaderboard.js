@@ -1,19 +1,40 @@
 
-//require object with score data
-
 $(document).ready(function(){
-    $.ajax({
-        url: "/api/leaderboard",
-        method: "GET"
-    }).then(function(data){
-        leaderboardSubmit = data;
-        id = data.id;
-        console.log(leaderboardSubmit);
+  
+  var leaderboard = $("tbody");
+  var rank = 1;
+
+  getLeaderboard();
+
+  function createLeaderboardRow(leaderboardData) {
+    console.log(leaderboardData);
+    var newTr = $("<tr>");
+    newTr.data("leaderboard", leaderboardData);
+    newTr.append("<td>" + rank + "</td>");
+    newTr.append("<td>" + leaderboardData.score + "</td>");
+    newTr.append("<td>" + leaderboardData.name + "</td>");
+    rank++;
+    return newTr;
+  }
+
+
+  function getLeaderboard() {
+    $.get("/api/leaderboard", function(data) {
+      var rowsToAdd = [];
+      for (var i = 0; i < data.length; i++) {
+        rowsToAdd.push(createLeaderboardRow(data[i]));
+      }
+      renderLeaderboard(rowsToAdd);
     });
-    // var rank = 1;
-    // for(var i = 0; i < 25; i++){
-    //     $("#leaderboardTable").append("<tr><td>"+ rank + "</td><td>" + leaderboardSubmit.score[i] + "</td><td>" + leaderboardSubmit.username[i] + "</td></tr>");
-    //     i++;
-    //     rank++;
-    // };
+  }
+  
+  function renderLeaderboard(rows) {
+    if (rows.length) {
+      console.log(rows);
+      leaderboard.prepend(rows);
+    } else {
+      console.log("Something has gone terribly wrong!");
+    }
+  }
+
 });

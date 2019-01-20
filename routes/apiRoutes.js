@@ -10,7 +10,7 @@ module.exports = function(app) {
       ],
       limit: 1
     }).then(function(dbQuestions) {
-      console.log('dbQuestions =')
+      console.log("dbQuestions =");
       console.log(JSON.stringify(dbQuestions[0]));
       res.json(dbQuestions);
     }).catch(function(err){
