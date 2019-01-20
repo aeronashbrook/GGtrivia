@@ -1,7 +1,7 @@
 var points = 0;//start with 0 points.
-
 var trivia; //global variable for specific trivia question
 var usedQ = [];
+
 
 
 $("#circleTimer").circletimer({
@@ -94,23 +94,30 @@ var game = {
     $("#questionDiv").hide();
     $("#gameOver").show();
     $("#displayScore").text("Your final score was: " + points);
-    $("#usernameSubmit").on("click", function(event) {
+    var nameInput = $("#usernameSubmit");
+    $(document).on("submit", handleUsernameSubmit);
+    function handleUsernameSubmit(event) {
       event.preventDefault();
-      var username = $("#usernameInput").val().trim();
-      var leaderboardSubmit = {
-        name: username,
+  
+      if (!nameInput.val().trim().trim()) {
+        return;
+      }
+  
+      insertUsername({
+        name: nameInput.val().trim(),
         score: points
-      };
-      console.log(leaderboardSubmit);
+      });
+    }
+
+    function insertUsername(leaderboardData) {
       $.ajax({
         url: "/api/leaderboard",
         method: "POST",
-        data: leaderboardSubmit
-      }).then(function(req, res) {
-        console.log(req);
-        console.log(res);
-      });
-    });
+        data: leaderboardData
+      }).then(window.location = "/leaderboard.html");
+      // $.post("/api/leaderboard", leaderboardData)
+      //   .then(window.location = "/leaderboard.html");
+    }
 
 
     //why do we have this here?

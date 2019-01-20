@@ -4,6 +4,8 @@ $(document).ready(function(){
   var leaderboard = $("tbody");
   var rank = 1;
 
+  
+
   getLeaderboard();
 
   function createLeaderboardRow(leaderboardData) {
