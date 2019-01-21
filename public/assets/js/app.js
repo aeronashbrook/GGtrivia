@@ -1,20 +1,18 @@
 var points = 0;//start with 0 points.
 
-//var time = 10;//what should time limit be?
-
 var trivia; //global variable for specific trivia question
 //var interval;
 var usedQ = [];
 
 
 $("#circleTimer").circletimer({
+
   onComplete: function() {
     answerColor();
     setTimeout(game.over, 3000);
   },
   timeout: 10000
 });
-
 
 //main game function
 var game = {
@@ -97,8 +95,24 @@ var game = {
         $("#questionDiv").hide();
         $("#gameOver").show();
         $("#displayScore").text("Your final score was: " + points);
+        $("#usernameSubmit").on("click", function(event) {
+            event.preventDefault();
+            $.ajax({
+                url: "/api/leaderboard",
+                method: "POST",
+                data: leaderboardSubmit
+            }).then(function(req, res) {
+                console.log(req);
+                console.log(res);
+            });
+        });
         var username = $("#usernameInput").val().trim();
+        var leaderboardSubmit = {
+            name: username,
+            score: points
+        }
         //post score to database
+
         score = 0;
     }
 };

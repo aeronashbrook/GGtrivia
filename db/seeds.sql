@@ -1,3 +1,4 @@
+use trivia;
 INSERT INTO questions (question, option1, option2, option3, option4, correctAnswer, category)
 VALUES ("What is the tallest building in the world as of 2018?", "Shanghai Tower", "Burj Khalifa", "Kingdom Clock Tower", "One World Trade Center", "Burj Khalifa", "Famous Places and Landmarks"),
 ("The Colosseum is located in which country?", "Italy", "France", "Norway", "Germany", "Italy", "Famous Places and Landmarks"),
@@ -105,4 +106,9 @@ VALUES ("What is the tallest building in the world as of 2018?", "Shanghai Tower
 ("What was the first of H.J. Heinz' '57 varieties'?", "Mustard", "Ketchup", "Horseradish", "Vinegar", "Horseradish", "Food"),
 ("What hit the market alongside spinach as the first frozen veggies?", "Carrots", "Green Beans", "Corn", "Peas", "Peas", "Food");
 
+
+INSERT INTO leaderboards (name, score) 
+VALUES ("John", 2), ("Jim", 1), ("Jeff", 3);
+
 SELECT * FROM questions;
+

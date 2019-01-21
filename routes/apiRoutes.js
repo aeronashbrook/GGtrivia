@@ -19,7 +19,7 @@ module.exports = function(app) {
   });
   // Get for Leaderboard
   app.get("/api/leaderboard", function(req, res) {
-    db.Leaderboard.findAll({
+    db.leaderboard.findAll({
       order: [
         ["score", "DESC"]
       ]
@@ -30,13 +30,13 @@ module.exports = function(app) {
 
   // Post for Questions
   app.post("/api/questions", function(req, res) {
-    db.Questions.create(req.body).then(function(dbQuestions) {
+    db.questions.create(req.body).then(function(dbQuestions) {
       res.json(dbQuestions);
     });
   });
   // Post for Leaderboard
   app.post("/api/leaderboard", function(req, res) {
-    db.Leaderboard.create(req.body).then(function(dbLeaderboard) {
+    db.leaderboard.create(req.body).then(function(dbLeaderboard) {
       res.json(dbLeaderboard);
     });
   });
