@@ -4,15 +4,15 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       validate: {
         isAlphanumeric: true,
-        allowNull: false,
+        // allowNull: false,
         len: [1, 50]
       }
     },
     score: {
       type: DataTypes.INTEGER,
-      validate: {
-        allowNull: false,
-      }
+      // validate: {
+      //   allowNull: false,
+      // }
     }
   },{
     timestamps: false
