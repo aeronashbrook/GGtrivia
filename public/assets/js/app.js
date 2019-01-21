@@ -1,6 +1,4 @@
-// var trivia_db = questions; // change when JawsDB is up and running
 var points = 0;//start with 0 points.
-var time = 10;//what should time limit be?
 var trivia; //global variable for specific trivia question
 var interval;
 var usedQ = [];
@@ -20,12 +18,6 @@ var game = {
     questionPicker: function (){
         function picker(){
             var id;
-            // $.get("api/question", function(data){
-            //     trivia = data;
-            //     id = data.id;
-            //     select();
-            //     $("#circleTimer").circletimer("start");
-            // });
             $.ajax({
                 url: "/api/question",
                 method: "GET"
@@ -35,11 +27,6 @@ var game = {
                 console.log(trivia)
                 select();
             });
-            // var length = trivia_db.length;
-            // console.log('number of trivia_db options: ', trivia_db.length)
-            // var id = Math.floor(Math.random() * length);
-            // console.log('random ID:');
-            // console.log(id);
             function select(){
                 console.log('usedQ:');
                 console.log(usedQ);
@@ -48,13 +35,7 @@ var game = {
                     console.log('trivia:');
                     console.log(trivia);
                     game.display();
-                } 
-                // else if (usedQ.length === trivia_db.length){
-                //     //no more questions!
-                //     alert('You answered all of the questions!')
-                //     game.over();
-                // }
-                 else {
+                } else {
                     for(var i = 0; i < usedQ.length; i++){
                         if(id === usedQ[i]){
                             console.log(trivia.id + '!=' + usedQ[i])
@@ -66,9 +47,6 @@ var game = {
                     };
                 }   
             };
-            //Moved up because of async
-            // select();
-            // $("#circleTimer").circletimer("start");
         };
         picker();
     },
@@ -99,7 +77,6 @@ var game = {
         usedQ.push(trivia.id);
         console.log('trivia.id:');
         console.log(trivia.id);
-        // time = 10;
         if (actualAnswer != playerAns){
             console.log('game.over()')
             console.log(actualAnswer, ' != ', playerAns)
@@ -128,57 +105,6 @@ $(document).ready(function(){
     console.log('starting app')
     game.questionPicker();
 });
-
-//on-click for question buttons
-$(document).on('click', '.ansBtn', function(){
-    var playerAns = $(this).text().trim();
-    game.verify(playerAns);
-});
-
-//sample data
-// var trivia_db = [
-//     {
-//         id:0,
-//         question: "What is the Capitol of Minnesota?",
-//         option1: "Minneapolis",
-//         option2: "Saint Paul",
-//         option3: "Saint Cloud",
-//         option4: "Duluth",
-//         correctAnswer: "Saint Paul",
-//         category: "Geography"
-//     },
-//     {
-//         id:1,
-//         question: "What color is the sky at noon on a clear day?",
-//         option1: "Red",
-//         option2: "Purple",
-//         option3: "Blue",
-//         option4: "Orange",
-//         correctAnswer: "Blue",
-//         category: "Random"
-//     },
-//     {
-//         id:2,
-//         question: "Tasmania is an isolated island state belonging to which country?",
-//         option1: "New Zealand",
-//         option2: "Malaysia",
-//         option3: "Austria",
-//         option4: "Australia",
-//         correctAnswer: "Australia",
-//         category: "Geography"
-//     },
-//     {
-//         id:3,
-//         question: "What is the Capitol of Nicaragua",
-//         option1: "San Salvador",
-//         option2: "Leon",
-//         option3: "Managua",
-//         option4: "San Jose",
-//         correctAnswer: "Managua",
-//         category: "Geography"
-//     }
-
-// ];
 
 //Aeron's stuff
 $("#option1").on("click", function(){
