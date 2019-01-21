@@ -34,10 +34,19 @@ module.exports = function(app) {
       res.json(dbQuestions);
     });
   });
+  
   // Post for Leaderboard
-  app.post("/api/leaderboard", function(req, res) {
-    db.leaderboard.create(req.body).then(function(dbLeaderboard) {
+  app.post("/api/post/leaderboard", function(req, res) {
+    console.log('***************************');
+    console.log(req.body);
+    console.log('***************************');
+    db.leaderboard.create({
+      name:req.body.name,
+      score: req.body.score
+    }).then(function(dbLeaderboard) {
       res.json(dbLeaderboard);
+    }).catch(Sequelize.ValidationError, function(err){
+      console.log(err);
     });
   });
 

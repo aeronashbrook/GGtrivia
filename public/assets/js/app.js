@@ -83,45 +83,65 @@ var game = {
       console.log(actualAnswer, " != ", playerAns);
       game.over();
     } else {
-      points += 1;
+      points++;
       console.log("score: ", points);
       clearCss();
       game.questionPicker();
     }
   },
   over: function(){
+    var nameInput = $("#usernameSubmit");
+
     $("#mainDiv").empty();
     $("#questionDiv").hide();
     $("#gameOver").show();
     $("#displayScore").text("Your final score was: " + points);
-    var nameInput = $("#usernameSubmit");
-    $(document).on("submit", handleUsernameSubmit);
-    function handleUsernameSubmit(event) {
-      event.preventDefault();
-  
-      if (!nameInput.val().trim().trim()) {
-        return;
-      }
-  
-      insertUsername({
-        name: nameInput.val().trim(),
-        score: points
-      });
+    
+    $(nameInput).click(function(){
+      game.handleUsernameSubmit();
+    });
+  },
+  handleUsernameSubmit : function() {
+    var nameInput = $("#usernameInput");
+    var name = nameInput.val().trim();
+    if (!name) {
+      return;
     }
+    game.insertUsername({
+      name: name,
+      score: points
+    });
+  },
+  insertUsername: function(leaderboardData) {
+    console.log(leaderboardData);
+    var url = window.location.origin + "/leaderboard.html";
+    // console.log(leaderboardData);
+    // var lbData = JSON.stringify(leaderboardData);
+    // console.log(lbData);
+    alert("target URL: " + url);
+    // if(url){
+    //   setTimeout(function(){
+    //     document.location.href = url;
+    //   }, 500);
+    // }
 
-    function insertUsername(leaderboardData) {
-      $.ajax({
-        url: "/api/leaderboard",
-        method: "POST",
-        data: leaderboardData
-      }).then(window.location = "/leaderboard.html");
-      // $.post("/api/leaderboard", leaderboardData)
-      //   .then(window.location = "/leaderboard.html");
-    }
-
-
-    //why do we have this here?
-    score = 0;
+    // $.ajax({
+    //   url: "/api/leaderboard",
+    //   method: "POST",
+    //   data: leaderboardData
+    // }).then(function(req, res){
+    //   console.log('req:');
+    //   console.log(req);
+    //   console.log('res:');
+    //   console.log(res);
+    //   document.location.pathname = "/leaderboard";
+    // });
+    $.post("/api/post/leaderboard", leaderboardData, function(data, status){
+      console.log(data);
+      console.log(status);
+      alert("location should change!");
+      document.location.href = url;
+    }, "json");
   }
 };
 
@@ -130,6 +150,7 @@ $(document).ready(function(){
   console.log("starting app");
   game.questionPicker();
 });
+
 
 //Aeron's stuff
 $("#option1").on("click", function(){
