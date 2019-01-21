@@ -41,20 +41,20 @@ body {
 #links {
     margin-top: 90px;
 }
-#instructions, #leaderboard {
+#instructions, #leaderboard, #source {
     margin-right: 60px;
     text-decoration: none;
     background-color: rgba(255, 255, 255, 0);
     color: gray;
     border: none;
 }
-#source {
+#submitaQuestion {
     text-decoration: none;
     background-color: rgba(255, 255, 255, 0);
     color: gray;
     border: none;
 }
-#instructions:hover, #leaderboard:hover, #source:hover, #returnHome:hover {
+#instructions:hover, #leaderboard:hover, #source:hover, #returnHome:hover, #submitaQuestion:hover {
     background-color: rgba(255, 255, 255, 0);
     color: rgb(87, 87, 87);
 }
