@@ -5,7 +5,6 @@ var usedQ = [];
 
 
 $("#circleTimer").circletimer({
-
   onComplete: function() {
     answerColor();
     setTimeout(game.over, 3000);
