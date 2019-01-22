@@ -21,6 +21,11 @@ module.exports = function(app) {
   app.get("/submit", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/submit.html"));
   });
+  
+  // Instructions
+  app.get("/instructions", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/instructions.html"))
+  });
 
   // Load example page and pass in an example by id
   // app.get("/example/:id", function(req, res) {
