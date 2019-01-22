@@ -170,7 +170,7 @@ $("#option1").on("click", function(){
   },2500);
   setTimeout(function(){
     game.verify(playerAns);
-  },3550);
+  },3510);
 });
 $("#option2").on("click", function(){
   $("#option2").css("font-size", "24px");
@@ -187,7 +187,7 @@ $("#option2").on("click", function(){
   },2500);
   setTimeout(function(){
     game.verify(playerAns);
-  },3550);
+  },3510);
 });
 $("#option3").on("click", function(){
   $("#option3").css("font-size", "24px");
@@ -204,7 +204,7 @@ $("#option3").on("click", function(){
   },2500);
   setTimeout(function(){
     game.verify(playerAns);
-  },3550);
+  },3510);
 });
 $("#option4").on("click", function(){
   $("#option4").css("font-size", "24px");
@@ -221,7 +221,7 @@ $("#option4").on("click", function(){
   },2500);
   setTimeout(function(){
     game.verify(playerAns);
-  },3550);
+  },3510);
 });
 
 function answerColor(){
