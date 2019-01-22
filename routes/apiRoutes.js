@@ -29,16 +29,19 @@ module.exports = function(app) {
   });
 
   // Post for Questions
-  app.post("/api/post/question", function(req, res) {
-    console.log("***************************");
+  app.post("/api/post/questions", function(req, res) {
+    console.log('***************************');
     console.log(req.body);
-    console.log("***************************");
+    console.log('***************************');
     db.questions.create({
       question: req.body.question,
-      correctAnswer: req.body.correctAnswer,
       option1: req.body.option1,
       option2: req.body.option2,
-      option3: req.body.option3
+      option3: req.body.option3,
+      option4: req.body.option4,
+      correctAnswer: req.body.correctAnswer,
+      category: req.body.category
+
     }).then(function(dbQuestions) {
       res.json(dbQuestions);
     }).catch(Sequelize.ValidationError, function(err){

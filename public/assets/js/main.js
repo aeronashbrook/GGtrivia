@@ -13,6 +13,7 @@ function showTab(n) {
   }
   if (n === (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
+    $("#nextBtn").attr("id", "qSubmit");
   } else {
     document.getElementById("nextBtn").innerHTML = "Next";
   }
@@ -73,6 +74,52 @@ function fixStepIndicator(n) {
   x[n].className += " active";
 }
 
+//saving data
+
+//on mouseup, grabs data
+$(document).on("mouseup", "#qSubmit", function(){
+  dataGrabber();
+});
+
+//empty qObj variable
+var qObj = {
+  question: null,
+  option1: null,
+  option2: null,
+  option3: null,
+  option4: null,
+  correctAnswer: null,
+  category: 'misc.'
+};
+
+var dataGrabber= function(){
+  //captures values
+  var q = $('#question').val();
+  var o4 = $('#option4').val();
+  var o1 = $('#option1').val();
+  var o2 = $('#option2').val();
+  var o3 = $('#option3').val();
+  // var randomizer = Math.floor(Math.random() * 3);
+  console.log('q = ', q);
+  console.log('o4 = ', o4);
+  console.log('o1 = ', o1);
+  console.log('o2 = ', o2);
+  console.log('o3 = ', o3);
+  qObj.question = q;
+  qObj.option4 = o4;
+  qObj.correctAnswer = o4;
+  qObj.option1 = o1;
+  qObj.option2 = o2;
+  qObj.option3 = o3;
+  //qObj is now ready for POSTing
+  $.post("/api/post/questions", qObj, function(data, status){
+    console.log(data);
+    console.log(status);
+  }, "json").then(function(){
+    window.location.replace('/')
+  })
+}
+=======
 $("#regForm").on("Submit", function() {
   handleSubmit();
 });

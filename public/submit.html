@@ -20,22 +20,23 @@
 
     <!-- One "tab" for each step in the form: -->
       <div class="tab">Question:
-        <p><input placeholder="Type your question here..." oninput="this.className = ''" id="question"></p>
+        <p><input id = "question" placeholder="Type your question here..." oninput="this.className = ''" onsubmit = "qObjAssembler($('#question').val())"></p>
       </div>
 
       <div class="tab">Correct answer:
-        <p><input placeholder="Type the correct answer here..." oninput="this.className = ''" id="correctAnswer"></p>
+        <p><input id = "option4" placeholder="Type the correct answer here..." oninput="this.className = ''" onsubmit = "qObjAssembler($('#option4').val())"></p>
       </div>
 
       <div class="tab">Incorrect answers:
-        <p><input placeholder="Option 1" oninput="this.className = ''" id="o1"></p>
-        <p><input placeholder="Option 2" oninput="this.className = ''" id="o2"></p>
-        <p><input placeholder="Option 3" oninput="this.className = ''" id="o3"></p>
+        <p><input id = "option1" placeholder="Option 1" oninput="this.className = ''" onsubmit = "qObjAssembler($('#option1').val())"></p>
+        <p><input id = "option2" placeholder="Option 2" oninput="this.className = ''" onsubmit = "qObjAssembler($('#option2').val())"></p>
+        <p><input id = "option3" placeholder="Option 3" oninput="this.className = ''" onsubmit = "qObjAssembler($('#option3').val())"></p>
+
       </div>
 
       <div style="overflow:auto;">
       <div style="float:right;">
-        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+        <button type="submit" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
         <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
         </div>
       </div>

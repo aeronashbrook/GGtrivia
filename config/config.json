@@ -1,7 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "quasi",
+    "password": "vegetable",
+
     "database": "trivia",
     "host": "localhost",
     "dialect": "mysql"
