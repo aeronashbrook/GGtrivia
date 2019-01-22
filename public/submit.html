@@ -13,10 +13,10 @@
     </head>
 
 <body>
-<a href="index.html"><img src="assets/img/GGlogo2_4.png" alt="GGtrivia" id="homeLogo"></a>
+<a href="/"><img src="assets/img/GGlogo2_4.png" alt="GGtrivia" id="homeLogo"></a>
   <div class="jumbotron">
       <h1>Submit a Question</h1>
-      <form id="regForm" action="">
+      <form id="regForm" action="submit">
 
     <!-- One "tab" for each step in the form: -->
       <div class="tab">Question:
@@ -31,6 +31,7 @@
         <p><input id = "option1" placeholder="Option 1" oninput="this.className = ''" onsubmit = "qObjAssembler($('#option1').val())"></p>
         <p><input id = "option2" placeholder="Option 2" oninput="this.className = ''" onsubmit = "qObjAssembler($('#option2').val())"></p>
         <p><input id = "option3" placeholder="Option 3" oninput="this.className = ''" onsubmit = "qObjAssembler($('#option3').val())"></p>
+
       </div>
 
       <div style="overflow:auto;">

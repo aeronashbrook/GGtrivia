@@ -41,6 +41,7 @@ module.exports = function(app) {
       option4: req.body.option4,
       correctAnswer: req.body.correctAnswer,
       category: req.body.category
+
     }).then(function(dbQuestions) {
       res.json(dbQuestions);
     }).catch(Sequelize.ValidationError, function(err){
@@ -50,9 +51,9 @@ module.exports = function(app) {
   
   // Post for Leaderboard
   app.post("/api/post/leaderboard", function(req, res) {
-    console.log('***************************');
+    console.log("***************************");
     console.log(req.body);
-    console.log('***************************');
+    console.log("***************************");
     db.leaderboard.create({
       name:req.body.name,
       score: req.body.score
