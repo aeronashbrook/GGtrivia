@@ -44,21 +44,22 @@ module.exports = function(app) {
     }).catch(Sequelize.ValidationError, function(err){
       console.log(err);
     });
+  });
   
-    // Post for Leaderboard
-    app.post("/api/post/leaderboard", function(req, res) {
-      console.log("***************************");
-      console.log(req.body);
-      console.log("***************************");
-      db.leaderboard.create({
-        name:req.body.name,
-        score: req.body.score
-      }).then(function(dbLeaderboard) {
-        res.json(dbLeaderboard);
-      }).catch(Sequelize.ValidationError, function(err){
-        console.log(err);
-      });
+  // Post for Leaderboard
+  app.post("/api/post/leaderboard", function(req, res) {
+    console.log("***************************");
+    console.log(req.body);
+    console.log("***************************");
+    db.leaderboard.create({
+      name:req.body.name,
+      score: req.body.score
+    }).then(function(dbLeaderboard) {
+      res.json(dbLeaderboard);
+    }).catch(Sequelize.ValidationError, function(err){
+      console.log(err);
     });
+  });
 
   // // Delete an example by id
   // app.delete("/api/examples/:id", function(req, res) {
@@ -66,5 +67,4 @@ module.exports = function(app) {
   //     res.json(dbExample);
   //   });
   // });
-  });
 };
