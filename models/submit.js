@@ -3,40 +3,30 @@ module.exports = function(sequelize, DataTypes) {
     question: {
       type: DataTypes.STRING,
       validate: {
-        isAlphanumeric: true,
-        allowNull: false,
         len: [1, 500]
       }
     },
     correctAnswer: {
       type: DataTypes.STRING,
       validate: {
-        isAlphanumeric: true,
-        allowNull: false,
         len: [1,255]
       }
     },
     option1: {
       type: DataTypes.STRING,
       validate: {
-        isAlphanumeric: true,
-        allowNull: false,
         len: [1,255]
       }
     },
     option2: {
       type: DataTypes.STRING,
       validate: {
-        isAlphanumeric: true,
-        allowNull: false,
         len: [1,255]
       }
     },
     option3: {
       type: DataTypes.STRING,
       validate: {
-        isAlphanumeric: true,
-        allowNull: false,
         len: [1,255]
       }
     }

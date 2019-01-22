@@ -89,22 +89,22 @@ var qObj = {
   option3: null,
   option4: null,
   correctAnswer: null,
-  category: 'misc.'
+  category: "misc."
 };
 
 var dataGrabber= function(){
   //captures values
-  var q = $('#question').val();
-  var o4 = $('#option4').val();
-  var o1 = $('#option1').val();
-  var o2 = $('#option2').val();
-  var o3 = $('#option3').val();
+  var q = $("#question").val();
+  var o4 = $("#option4").val();
+  var o1 = $("#option1").val();
+  var o2 = $("#option2").val();
+  var o3 = $("#option3").val();
   // var randomizer = Math.floor(Math.random() * 3);
-  console.log('q = ', q);
-  console.log('o4 = ', o4);
-  console.log('o1 = ', o1);
-  console.log('o2 = ', o2);
-  console.log('o3 = ', o3);
+  console.log("q = ", q);
+  console.log("o4 = ", o4);
+  console.log("o1 = ", o1);
+  console.log("o2 = ", o2);
+  console.log("o3 = ", o3);
   qObj.question = q;
   qObj.option4 = o4;
   qObj.correctAnswer = o4;
@@ -112,11 +112,11 @@ var dataGrabber= function(){
   qObj.option2 = o2;
   qObj.option3 = o3;
   //qObj is now ready for POSTing
-  $.post("/api/post/questions", qObj, function(data, status){
+  $.post("/api/post/submitted", qObj, function(data, status){
     console.log(data);
     console.log(status);
   }, "json").then(function(){
-    window.location.replace("/");
+    alert("You're question has been added to a pool of submitted questions.");   
   });
 };
 
@@ -150,7 +150,7 @@ function insertQuestion(questionData) {
   console.log(questionData);
 
 
-  $.post("/api/post/question", questionData, function(data, status){
+  $.post("/api/post/submitted", questionData, function(data, status){
     console.log(data);
     console.log(status);
     // alert("location should change!");
