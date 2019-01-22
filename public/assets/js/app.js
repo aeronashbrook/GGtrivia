@@ -5,7 +5,6 @@ var usedQ = [];
 
 
 $("#circleTimer").circletimer({
-
   onComplete: function() {
     answerColor();
     setTimeout(game.over, 3000);
@@ -98,6 +97,7 @@ var game = {
     $("#displayScore").text("Your final score was: " + points);
     
     $(nameInput).click(function(){
+      event.preventDefault();
       game.handleUsernameSubmit();
     });
   },
@@ -114,11 +114,11 @@ var game = {
   },
   insertUsername: function(leaderboardData) {
     console.log(leaderboardData);
-    var url = window.location.origin + "/leaderboard.html";
+    // var url = window.location.origin + "/leaderboard.html";
     // console.log(leaderboardData);
     // var lbData = JSON.stringify(leaderboardData);
     // console.log(lbData);
-    alert("target URL: " + url);
+    // alert("target URL: " + url);
     // if(url){
     //   setTimeout(function(){
     //     document.location.href = url;
@@ -139,9 +139,11 @@ var game = {
     $.post("/api/post/leaderboard", leaderboardData, function(data, status){
       console.log(data);
       console.log(status);
-      alert("location should change!");
-      document.location.href = url;
-    }, "json");
+      // alert("location should change!");
+      // document.location.href = url;
+    }, "json").then(function(){
+      window.location.replace("leaderboard.html");
+    });
   }
 };
 
@@ -168,7 +170,7 @@ $("#option1").on("click", function(){
   },2500);
   setTimeout(function(){
     game.verify(playerAns);
-  },3550);
+  },3510);
 });
 $("#option2").on("click", function(){
   $("#option2").css("font-size", "24px");
@@ -185,7 +187,7 @@ $("#option2").on("click", function(){
   },2500);
   setTimeout(function(){
     game.verify(playerAns);
-  },3550);
+  },3510);
 });
 $("#option3").on("click", function(){
   $("#option3").css("font-size", "24px");
@@ -202,7 +204,7 @@ $("#option3").on("click", function(){
   },2500);
   setTimeout(function(){
     game.verify(playerAns);
-  },3550);
+  },3510);
 });
 $("#option4").on("click", function(){
   $("#option4").css("font-size", "24px");
@@ -219,7 +221,7 @@ $("#option4").on("click", function(){
   },2500);
   setTimeout(function(){
     game.verify(playerAns);
-  },3550);
+  },3510);
 });
 
 function answerColor(){
