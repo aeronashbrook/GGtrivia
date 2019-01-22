@@ -28,12 +28,12 @@ module.exports = function(app) {
     });
   });
 
-  // Post for Questions
-  app.post("/api/post/questions", function(req, res) {
+  // Post for Submitted Questions
+  app.post("/api/post/submitted", function(req, res) {
     console.log('***************************');
     console.log(req.body);
     console.log('***************************');
-    db.questions.create({
+    db.submitted.create({
       question: req.body.question,
       option1: req.body.option1,
       option2: req.body.option2,
@@ -42,8 +42,8 @@ module.exports = function(app) {
       correctAnswer: req.body.correctAnswer,
       category: req.body.category
 
-    }).then(function(dbQuestions) {
-      res.json(dbQuestions);
+    }).then(function(dbSubmit) {
+      res.json(dbSubmit);
     }).catch(Sequelize.ValidationError, function(err){
       console.log(err);
     });
