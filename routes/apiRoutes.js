@@ -29,26 +29,36 @@ module.exports = function(app) {
   });
 
   // Post for Questions
-  app.post("/api/questions", function(req, res) {
-    db.questions.create(req.body).then(function(dbQuestions) {
-      res.json(dbQuestions);
-    });
-  });
-  
-  // Post for Leaderboard
-  app.post("/api/post/leaderboard", function(req, res) {
-    console.log('***************************');
+  app.post("/api/post/question", function(req, res) {
+    console.log("***************************");
     console.log(req.body);
-    console.log('***************************');
-    db.leaderboard.create({
-      name:req.body.name,
-      score: req.body.score
-    }).then(function(dbLeaderboard) {
-      res.json(dbLeaderboard);
+    console.log("***************************");
+    db.questions.create({
+      question: req.body.question,
+      correctAnswer: req.body.correctAnswer,
+      option1: req.body.option1,
+      option2: req.body.option2,
+      option3: req.body.option3
+    }).then(function(dbQuestions) {
+      res.json(dbQuestions);
     }).catch(Sequelize.ValidationError, function(err){
       console.log(err);
     });
-  });
+  
+    // Post for Leaderboard
+    app.post("/api/post/leaderboard", function(req, res) {
+      console.log("***************************");
+      console.log(req.body);
+      console.log("***************************");
+      db.leaderboard.create({
+        name:req.body.name,
+        score: req.body.score
+      }).then(function(dbLeaderboard) {
+        res.json(dbLeaderboard);
+      }).catch(Sequelize.ValidationError, function(err){
+        console.log(err);
+      });
+    });
 
   // // Delete an example by id
   // app.delete("/api/examples/:id", function(req, res) {
@@ -56,4 +66,5 @@ module.exports = function(app) {
   //     res.json(dbExample);
   //   });
   // });
+  });
 };

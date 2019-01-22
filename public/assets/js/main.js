@@ -6,25 +6,27 @@ function showTab(n) {
   var x = document.getElementsByClassName("tab");
   x[n].style.display = "block";
   // ... and fix the Previous/Next buttons:
-  if (n == 0) {
+  if (n === 0) {
     document.getElementById("prevBtn").style.display = "none";
   } else {
     document.getElementById("prevBtn").style.display = "inline";
   }
-  if (n == (x.length - 1)) {
+  if (n === (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
   } else {
     document.getElementById("nextBtn").innerHTML = "Next";
   }
   // ... and run a function that displays the correct step indicator:
-  fixStepIndicator(n)
+  fixStepIndicator(n);
 }
 
 function nextPrev(n) {
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
   // Exit the function if any field in the current tab is invalid:
-  if (n == 1 && !validateForm()) return false;
+  if (n === 1 && !validateForm()) {
+    return false;
+  }
   // Hide the current tab:
   x[currentTab].style.display = "none";
   // Increase or decrease the current tab by 1:
@@ -47,7 +49,7 @@ function validateForm() {
   // A loop that checks every input field in the current tab:
   for (i = 0; i < y.length; i++) {
     // If a field is empty...
-    if (y[i].value == "") {
+    if (y[i].value === "") {
       // add an "invalid" class to the field:
       y[i].className += " invalid";
       // and set the current valid status to false:
@@ -69,4 +71,44 @@ function fixStepIndicator(n) {
   }
   //... and adds the "active" class to the current step:
   x[n].className += " active";
+}
+
+$("#regForm").on("Submit", function() {
+  handleSubmit();
+});
+
+function handleSubmit() {
+  var questionInput = $("#question");
+  var question = questionInput.val().trim();
+  var caInput = $("#correctAnswer");
+  var correctAnswer = caInput.val().trim();
+  var o1Input = $("#o1");
+  var o1 = o1Input.val().trim();
+  var o2Input = $("#o2");
+  var o2 = o2Input.val().trim();
+  var o3Input = $("#o3");
+  var o3 = o3Input.val().trim();
+
+  insertQuestion({
+    question: question,
+    correctAnswer: correctAnswer,
+    option1: o1,
+    option2: o2,
+    option3: o3
+  });
+  
+}
+
+function insertQuestion(questionData) {
+  console.log(questionData);
+
+
+  $.post("/api/post/question", questionData, function(data, status){
+    console.log(data);
+    console.log(status);
+    // alert("location should change!");
+    // document.location.href = url;
+  }, "json").then(function(){
+    alert("You're question has been added to a pool of submitted questions.");
+  });
 }

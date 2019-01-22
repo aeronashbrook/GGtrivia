@@ -13,24 +13,24 @@
     </head>
 
 <body>
-<a href="index.html"><img src="assets/img/GGlogo2_4.png" alt="GGtrivia" id="homeLogo"></a>
+<a href="/"><img src="assets/img/GGlogo2_4.png" alt="GGtrivia" id="homeLogo"></a>
   <div class="jumbotron">
       <h1>Submit a Question</h1>
-      <form id="regForm" action="">
+      <form id="regForm" action="submit">
 
     <!-- One "tab" for each step in the form: -->
       <div class="tab">Question:
-        <p><input placeholder="Type your question here..." oninput="this.className = ''"></p>
+        <p><input placeholder="Type your question here..." oninput="this.className = ''" id="question"></p>
       </div>
 
       <div class="tab">Correct answer:
-        <p><input placeholder="Type the correct answer here..." oninput="this.className = ''"></p>
+        <p><input placeholder="Type the correct answer here..." oninput="this.className = ''" id="correctAnswer"></p>
       </div>
 
       <div class="tab">Incorrect answers:
-        <p><input placeholder="Option 1" oninput="this.className = ''"></p>
-        <p><input placeholder="Option 2" oninput="this.className = ''"></p>
-        <p><input placeholder="Option 3" oninput="this.className = ''"></p>
+        <p><input placeholder="Option 1" oninput="this.className = ''" id="o1"></p>
+        <p><input placeholder="Option 2" oninput="this.className = ''" id="o2"></p>
+        <p><input placeholder="Option 3" oninput="this.className = ''" id="o3"></p>
       </div>
 
       <div style="overflow:auto;">

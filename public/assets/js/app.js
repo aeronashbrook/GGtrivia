@@ -142,7 +142,7 @@ var game = {
       // alert("location should change!");
       // document.location.href = url;
     }, "json").then(function(){
-      window.location.replace("leaderboard.html");
+      window.location.replace("/leaderboard");
     });
   }
 };
