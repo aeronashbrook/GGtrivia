@@ -1,10 +1,11 @@
 body {
     background-image: url(https://ih1.redbubble.net/image.106520130.7160/pp,550x550.u2.jpg); 
     background-size: cover;
+    height: 100%;
 }
 .jumbotron {
     background-size: cover;
-    width: 1000px;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10%;
@@ -31,4 +32,18 @@ h2 {
 #logo {
     height: 200px;
     width: 400px;
+}
+@media only screen and (max-width: 580px) {
+    .jumbotron {
+        width: 95%;
+    }
+    #logodiv {
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #logo {
+        height: 150px;
+        width: 300px;
+    }
 }
