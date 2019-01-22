@@ -116,10 +116,10 @@ var dataGrabber= function(){
     console.log(data);
     console.log(status);
   }, "json").then(function(){
-    window.location.replace('/')
-  })
-}
-=======
+    window.location.replace("/");
+  });
+};
+
 $("#regForm").on("Submit", function() {
   handleSubmit();
 });
