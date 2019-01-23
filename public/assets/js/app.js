@@ -283,8 +283,8 @@ function startExit() {
   $("#option2").removeClass("animated flipInX delay-1s");
   $("#option3").removeClass("animated flipInX delay-1s");
   $("#option4").removeClass("animated flipInX delay-1s");
-  $("#circleTimer").removeClass("animated fadeIn duration-1s");
-  $("#qTitle").removeClass("animated fadeIn duration-1s");
+  $("#circleTimer").removeClass("animated fadeIn delay-1s duration-1s");
+  $("#qTitle").removeClass("animated fadeIn delay-1s duration-1s");
   setTimeout(exitAni, 1);
 }
 function exitAni(){
