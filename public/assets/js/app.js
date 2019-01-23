@@ -299,7 +299,7 @@ function exitAni(){
   $("#qTitle").addClass("animated fadeOut duration-1s");
 }
 
-$(".buttonOptions").mouseup(function(){
+$(".buttonOptions").touchend(function(){
   $(this).blur();
 });
 
