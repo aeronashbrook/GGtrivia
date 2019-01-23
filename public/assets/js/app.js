@@ -275,8 +275,8 @@ function animations(){
   $("#option2").addClass("animated flipInX delay-1s");
   $("#option3").addClass("animated flipInX delay-1s");
   $("#option4").addClass("animated flipInX delay-1s"); 
-  $("#circleTimer").addClass("animated fadeIn duration-1s");
-  $("#qTitle").addClass("animated fadeIn duration-1s");
+  $("#circleTimer").addClass("animated fadeIn delay-0.5s duration-1s");
+  $("#qTitle").addClass("animated fadeIn delay-0.5s duration-1s");
 }
 function startExit() {
   $("#option1").removeClass("animated flipInX delay-1s");
