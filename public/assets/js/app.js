@@ -9,7 +9,7 @@ $("#circleTimer").circletimer({
     answerColor();
     setTimeout(game.over, 3000);
   },
-  timeout: 10000
+  timeout: 12000
 });
 
 //main game function
