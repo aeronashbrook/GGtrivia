@@ -14,41 +14,40 @@ $("#circleTimer").circletimer({
 
 //main game function
 var game = {
-
   questionPicker: function (){
-    function picker(){
-      var id;
-      $.ajax({
-        url: "/api/question",
-        method: "GET"
-      }).then(function(data){
-        trivia = data[0];
-        id = data.id;
-        console.log(trivia);
-        select();
-      });
-      function select(){
-        console.log("usedQ:");
-        console.log(usedQ);
-        if(usedQ.length === 0){
-          console.log("first question!");
-          console.log("trivia:");
-          console.log(trivia);
+    console.log("Picking Question:")
+    $.ajax({
+      url: "/api/question",
+      method: "GET"
+    }).then(function(data){
+      trivia = data[0];
+      console.log(trivia);
+      game.select();
+    });
+  },
+  select: function(){
+    console.log("usedQ:");
+    console.log(usedQ);
+    if(usedQ.length === 0){
+      console.log("first question!");
+      console.log("trivia:");
+      console.log(trivia);
+      game.display();
+    } else if (usedQ.length > 0){
+      console.log('for loop:')
+      for(var i = 0; i <= usedQ.length; i++){
+        if(trivia.id === usedQ[i]){
+          console.log(trivia.id + "!=" + usedQ[i]);
+          console.log("Already used that question, picking again...");
+          game.questionPicker();
+        } else if (trivia.id !== usedQ[i] && i === usedQ.length) {
+          console.log("No matches!");
           game.display();
-        } else {
-          for(var i = 0; i < usedQ.length; i++){
-            if(id === usedQ[i]){
-              console.log(trivia.id + "!=" + usedQ[i]);
-              console.log("Already used that question, picking again...");
-              game.questionPicker();
-            } else {
-              game.display();
-            }
-          }
-        }   
+        } else if (trivia.id !== usedQ[i] && i < usedQ.length) {
+          console.log(trivia.id + " vs. " + usedQ[i]);
+        }
       }
-    }
-    picker();
+    }   
   },
   display: function(){
     console.log("game.display is running...");
