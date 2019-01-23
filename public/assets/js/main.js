@@ -76,15 +76,14 @@ function fixStepIndicator(n) {
 
 //saving data
 
-//on mouseup, grabs data
 $(document).on("click", "#qSubmit", function(event){
   event.preventDefault();
 });
 
+//on mouseup, grabs data, alerts
 $(document).on("mouseup", "#qSubmit", function(){
   dataGrabber();
   alert("Your question has been added to a pool of submitted questions.");
-  // window.location.pathname.replace("/");
 });
 
 //empty qObj variable

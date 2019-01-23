@@ -3,7 +3,7 @@ module.exports = function (sequelize, DataTypes) {
     name: {
       type: DataTypes.STRING,
       validate: {
-        isAlphanumeric: true,
+        // isAlphanumeric: true,
         // allowNull: false,
         len: [1, 50]
       }
