@@ -9,7 +9,7 @@ $("#circleTimer").circletimer({
     answerColor();
     setTimeout(game.over, 3000);
   },
-  timeout: 10000
+  timeout: 12000
 });
 
 //main game function
@@ -83,7 +83,6 @@ var game = {
     } else {
       points++;
       console.log("score: ", points);
-      clearCss();
       game.questionPicker();
     }
   },
@@ -168,8 +167,9 @@ $("#option1").on("click", function(){
     startExit();
   },2500);
   setTimeout(function(){
+    clearCss();
     game.verify(playerAns);
-  },3510);
+  },3502);
 });
 $("#option2").on("click", function(){
   $("#option2").css("font-size", "24px");
@@ -185,8 +185,9 @@ $("#option2").on("click", function(){
     startExit();
   },2500);
   setTimeout(function(){
+    clearCss();
     game.verify(playerAns);
-  },3510);
+  },3502);
 });
 $("#option3").on("click", function(){
   $("#option3").css("font-size", "24px");
@@ -202,8 +203,9 @@ $("#option3").on("click", function(){
     startExit();
   },2500);
   setTimeout(function(){
+    clearCss();
     game.verify(playerAns);
-  },3510);
+  },3502);
 });
 $("#option4").on("click", function(){
   $("#option4").css("font-size", "24px");
@@ -219,8 +221,9 @@ $("#option4").on("click", function(){
     startExit();
   },2500);
   setTimeout(function(){
+    clearCss();
     game.verify(playerAns);
-  },3510);
+  },3502);
 });
 
 function answerColor(){
@@ -274,16 +277,16 @@ function animations(){
   $("#option2").addClass("animated flipInX delay-1s");
   $("#option3").addClass("animated flipInX delay-1s");
   $("#option4").addClass("animated flipInX delay-1s"); 
-  $("#circleTimer").addClass("animated fadeIn duration-1s");
-  $("#qTitle").addClass("animated fadeIn duration-1s");
+  $("#circleTimer").addClass("animated fadeIn delay-1s duration-1s");
+  $("#qTitle").addClass("animated fadeIn delay-1s duration-1s");
 }
 function startExit() {
   $("#option1").removeClass("animated flipInX delay-1s");
   $("#option2").removeClass("animated flipInX delay-1s");
   $("#option3").removeClass("animated flipInX delay-1s");
   $("#option4").removeClass("animated flipInX delay-1s");
-  $("#circleTimer").removeClass("animated fadeIn duration-1s");
-  $("#qTitle").removeClass("animated fadeIn duration-1s");
+  $("#circleTimer").removeClass("animated fadeIn delay-1s duration-1s");
+  $("#qTitle").removeClass("animated fadeIn delay-1s duration-1s");
   setTimeout(exitAni, 1);
 }
 function exitAni(){
@@ -294,5 +297,9 @@ function exitAni(){
   $("#circleTimer").addClass("animated fadeOut duration-1s");
   $("#qTitle").addClass("animated fadeOut duration-1s");
 }
+
+$(".buttonOptions").touchend(function(){
+  $(this).blur();
+});
 
 
