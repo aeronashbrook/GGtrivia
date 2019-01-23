@@ -84,7 +84,6 @@ var game = {
     } else {
       points++;
       console.log("score: ", points);
-      clearCss();
       game.questionPicker();
     }
   },
@@ -169,6 +168,7 @@ $("#option1").on("click", function(){
     startExit();
   },2500);
   setTimeout(function(){
+    clearCss();
     game.verify(playerAns);
   },3502);
 });
@@ -186,6 +186,7 @@ $("#option2").on("click", function(){
     startExit();
   },2500);
   setTimeout(function(){
+    clearCss();
     game.verify(playerAns);
   },3502);
 });
@@ -203,6 +204,7 @@ $("#option3").on("click", function(){
     startExit();
   },2500);
   setTimeout(function(){
+    clearCss();
     game.verify(playerAns);
   },3502);
 });
@@ -220,6 +222,7 @@ $("#option4").on("click", function(){
     startExit();
   },2500);
   setTimeout(function(){
+    clearCss();
     game.verify(playerAns);
   },3502);
 });
