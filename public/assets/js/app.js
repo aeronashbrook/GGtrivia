@@ -17,13 +17,14 @@ var game = {
 
   questionPicker: function (){
     function picker(){
-      var id;
+      // var id;
+      console.log("Picking Question:")
       $.ajax({
         url: "/api/question",
         method: "GET"
       }).then(function(data){
         trivia = data[0];
-        id = data.id;
+        // id = data.id;
         console.log(trivia);
         select();
       });
@@ -35,14 +36,18 @@ var game = {
           console.log("trivia:");
           console.log(trivia);
           game.display();
-        } else {
-          for(var i = 0; i < usedQ.length; i++){
-            if(id === usedQ[i]){
+        } else if (usedQ.length > 0){
+          console.log('for loop:')
+          for(var i = 0; i <= usedQ.length; i++){
+            if(trivia.id === usedQ[i]){
               console.log(trivia.id + "!=" + usedQ[i]);
               console.log("Already used that question, picking again...");
               game.questionPicker();
-            } else {
+            } else if (trivia.id !== usedQ[i] && i === usedQ.length) {
+              console.log("No matches!");
               game.display();
+            } else if (trivia.id !== usedQ[i] && i < usedQ.length) {
+              console.log(trivia.id + " vs. " + usedQ[i]);
             }
           }
         }   
