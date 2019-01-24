@@ -15,42 +15,28 @@ $("#circleTimer").circletimer({
 //main game function
 var game = {
   questionPicker: function (){
-    console.log("Picking Question:")
     $.ajax({
       url: "/api/question",
       method: "GET"
     }).then(function(data){
       trivia = data[0];
-      console.log(trivia);
       game.select();
     });
   },
   select: function(){
-    console.log("usedQ:");
-    console.log(usedQ);
     if(usedQ.length === 0){
-      console.log("first question!");
-      console.log("trivia:");
-      console.log(trivia);
       game.display();
     } else if (usedQ.length > 0){
-      console.log('for loop:')
       for(var i = 0; i <= usedQ.length; i++){
         if(trivia.id === usedQ[i]){
-          console.log(trivia.id + "!=" + usedQ[i]);
-          console.log("Already used that question, picking again...");
           game.questionPicker();
         } else if (trivia.id !== usedQ[i] && i === usedQ.length) {
-          console.log("No matches!");
           game.display();
-        } else if (trivia.id !== usedQ[i] && i < usedQ.length) {
-          console.log(trivia.id + " vs. " + usedQ[i]);
         }
       }
     }   
   },
   display: function(){
-    console.log("game.display is running...");
     $("#circleTimer").circletimer("start");
     var qTitle = $("#qTitle");
     var a1 = $("#a1");
@@ -71,18 +57,12 @@ var game = {
     $(a4).append("<i class=\"fas fa-check\" id=\"check4\"></i><i class=\"fas fa-times\" id=\"x4\"></i>" + trivia.option4);
   },
   verify: function(playerAns){
-    console.log("verifying...");
     var actualAnswer = trivia.correctAnswer;
     usedQ.push(trivia.id);
-    console.log("trivia.id:");
-    console.log(trivia.id);
     if (actualAnswer !== playerAns){
-      console.log("game.over()");
-      console.log(actualAnswer, " != ", playerAns);
       game.over();
     } else {
       points++;
-      console.log("score: ", points);
       clearCss();
       game.questionPicker();
     }
@@ -113,33 +93,9 @@ var game = {
   },
   insertUsername: function(leaderboardData) {
     console.log(leaderboardData);
-    // var url = window.location.origin + "/leaderboard.html";
-    // console.log(leaderboardData);
-    // var lbData = JSON.stringify(leaderboardData);
-    // console.log(lbData);
-    // alert("target URL: " + url);
-    // if(url){
-    //   setTimeout(function(){
-    //     document.location.href = url;
-    //   }, 500);
-    // }
-
-    // $.ajax({
-    //   url: "/api/leaderboard",
-    //   method: "POST",
-    //   data: leaderboardData
-    // }).then(function(req, res){
-    //   console.log('req:');
-    //   console.log(req);
-    //   console.log('res:');
-    //   console.log(res);
-    //   document.location.pathname = "/leaderboard";
-    // });
     $.post("/api/post/leaderboard", leaderboardData, function(data, status){
       console.log(data);
       console.log(status);
-      // alert("location should change!");
-      // document.location.href = url;
     }, "json").then(function(){
       window.location.replace("/leaderboard");
     });
@@ -148,7 +104,6 @@ var game = {
 
 //Starts game
 $(document).ready(function(){
-  console.log("starting app");
   game.questionPicker();
 });
 

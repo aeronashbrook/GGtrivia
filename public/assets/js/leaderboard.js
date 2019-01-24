@@ -9,7 +9,6 @@ $(document).ready(function(){
   getLeaderboard();
 
   function createLeaderboardRow(leaderboardData) {
-    console.log(leaderboardData);
     var newTr = $("<tr>");
     newTr.data("leaderboard", leaderboardData);
     newTr.append("<td>" + rank + "</td>");
@@ -32,7 +31,6 @@ $(document).ready(function(){
   
   function renderLeaderboard(rows) {
     if (rows.length) {
-      console.log(rows);
       leaderboard.prepend(rows);
     } else {
       console.log("Something has gone terribly wrong!");

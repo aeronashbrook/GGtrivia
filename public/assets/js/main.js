@@ -105,12 +105,6 @@ var dataGrabber= function(){
   var o2 = $("#option2").val();
   var o3 = $("#option3").val();
 
-  // var randomizer = Math.floor(Math.random() * 3);
-  console.log("q = ", q);
-  console.log("o4 = ", o4);
-  console.log("o1 = ", o1);
-  console.log("o2 = ", o2);
-  console.log("o3 = ", o3);
   qObj.question = q;
   qObj.option4 = o4;
   qObj.correctAnswer = o4;
@@ -124,43 +118,3 @@ var dataGrabber= function(){
     console.log(status);
   }, "json");
 };
-
-// $("#regForm").on("Submit", function() {
-//   handleSubmit();
-// });
-
-// function handleSubmit() {
-//   var questionInput = $("#question");
-//   var question = questionInput.val().trim();
-//   var caInput = $("#correctAnswer");
-//   var correctAnswer = caInput.val().trim();
-//   var o1Input = $("#o1");
-//   var o1 = o1Input.val().trim();
-//   var o2Input = $("#o2");
-//   var o2 = o2Input.val().trim();
-//   var o3Input = $("#o3");
-//   var o3 = o3Input.val().trim();
-
-//   insertQuestion({
-//     question: question,
-//     correctAnswer: correctAnswer,
-//     option1: o1,
-//     option2: o2,
-//     option3: o3
-//   });
-  
-// }
-
-// function insertQuestion(questionData) {
-//   console.log(questionData);
-
-
-//   $.post("/api/post/submitted", questionData, function(data, status){
-//     console.log(data);
-//     console.log(status);
-//     // alert("location should change!");
-//     // document.location.href = url;
-//   }, "json").then(function(){
-//     alert("Your question has been added to a pool of submitted questions.");
-//   });
-// }
