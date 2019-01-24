@@ -195,4 +195,7 @@ svg {
         float: none;
         clear: all;
     }
+    .jumbotron {
+        width: 95%;
+    }
 }
